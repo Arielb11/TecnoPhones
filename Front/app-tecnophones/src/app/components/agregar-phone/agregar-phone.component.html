@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <span class="titulo">CREAR PRODUCTO</span>
+                    <form class="mt-3">
+                        <div class="mb-3" [formGroup]="phoneForm">
+                            <input type="text" formControlName="modelo" class="form-control form-control-lg" placeholder="Modelo">
+                        </div>
+                        <div class="mb-3">
+                            <input type="number" formControlName="estado" class="form-control form-control-lg" placeholder="Estado">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="bateria" class="form-control form-control-lg" placeholder="Bateria">
+                        </div>
+                        <div class="mb-3">
+                            <input type="number" formControlName="capacidad" class="form-control form-control-lg" placeholder="Capacidad">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="observaciones" class="form-control form-control-lg" placeholder="Observaciones">
+                        </div>
+                        <div class="mb-3">
+                            <input type="number" formControlName="valor" class="form-control form-control-lg" placeholder="Valor">
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-secondary btn-lg float-start" routerLink="/phone">VOLVER</button>
+                            <button class="btn btn-success btn-lg float-end">ACEPTAR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
