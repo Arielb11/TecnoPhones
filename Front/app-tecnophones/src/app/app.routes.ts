@@ -8,5 +8,6 @@ export const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'phone', component: PhoneComponent},
     {path: 'agregar-phone', component: AgregarPhoneComponent},
+    {path: 'editar-phone/:id', component: AgregarPhoneComponent},
     {path: '**', redirectTo: '', pathMatch: 'full'}
 ];

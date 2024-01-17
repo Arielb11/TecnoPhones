@@ -5,7 +5,7 @@
                 <div class="card-body text-center">
                     <span class="titulo">LISTADO DE PHONES</span>
                     <button class="btn btn-success float-end" routerLink="/agregar-phone">NUEVO</button>
-                    <table class="table table-striped mt-3">
+                    <table *ngIf="listPhones.length > 0" class="table table-striped mt-3">
                         <thead>
                           <tr>
                             <th scope="col">Modelo</th>
@@ -18,20 +18,21 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>Iphone 14</td>
-                            <td>Nuevo</td>
-                            <td>100%</td>
-                            <td>128GB</td>
-                            <td>Black</td>
-                            <td>600USD</td>
+                          <tr *ngFor="let phone of listPhones">
+                            <td>{{ phone.modelo }}</td>
+                            <td>{{ phone.estado }}</td>
+                            <td>{{ phone.bateria }}</td>
+                            <td>{{ phone.capacidad }}</td>
+                            <td>{{ phone.observaciones }}</td>
+                            <td>{{ phone.valor }}</td>
                             <td>
-                                <i class="fas fa-solid fa-pen-to-square text-primary"></i>
-                                <i class="fas fa-solid fa-trash text-danger"></i>
+                                <i [routerLink]="['/editar-phone', phone._id]" class="fas fa-solid fa-pen-to-square text-primary"></i>
+                                <i (click)="eliminarPhone(phone._id)" class="fas fa-solid fa-trash text-danger"></i>
                             </td>
                           </tr>
                         </tbody>
                       </table>
+                      <h5 style="text-align: start; margin-top: 10px;" *ngIf="listPhones.length == 0">No hay dispositivos para mostrar</h5>
                 </div>
             </div>
         </div>

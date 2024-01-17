@@ -3,16 +3,25 @@
         <div class="col-lg-6 offset-lg-3">
             <div class="card">
                 <div class="card-body">
-                    <span class="titulo">CREAR PRODUCTO</span>
-                    <form class="mt-3">
-                        <div class="mb-3" [formGroup]="phoneForm">
+                    <span class="titulo">{{ titulo | uppercase}}</span>
+                    <form class="mt-3" [formGroup]="phoneForm" (ngSubmit)="agregarPhone()">
+                        <div class="mb-3">
                             <input type="text" formControlName="modelo" class="form-control form-control-lg" placeholder="Modelo">
+                            <div class="text-danger" *ngIf="phoneForm.get('modelo')?.hasError('required') && phoneForm.get('modelo')?.touched">
+                                <span>El modelo <strong>es obligatorio</strong></span>
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <input type="number" formControlName="estado" class="form-control form-control-lg" placeholder="Estado">
+                            <input type="text" formControlName="estado" class="form-control form-control-lg" placeholder="Estado">
+                            <div class="text-danger" *ngIf="phoneForm.get('estado')?.hasError('required') && phoneForm.get('estado')?.touched">
+                                <span>El estado <strong>es obligatorio</strong></span>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <input type="text" formControlName="bateria" class="form-control form-control-lg" placeholder="Bateria">
+                            <div class="text-danger" *ngIf="phoneForm.get('bateria')?.hasError('required') && phoneForm.get('bateria')?.touched">
+                                <span>La bateria <strong>es obligatorio</strong></span>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <input type="number" formControlName="capacidad" class="form-control form-control-lg" placeholder="Capacidad">
@@ -25,7 +34,7 @@
                         </div>
                         <div class="mb-3">
                             <button class="btn btn-secondary btn-lg float-start" routerLink="/phone">VOLVER</button>
-                            <button class="btn btn-success btn-lg float-end">ACEPTAR</button>
+                            <button class="btn btn-success btn-lg float-end" type="submit" [disabled]="phoneForm.invalid">ACEPTAR</button>
                         </div>
                     </form>
                 </div>
