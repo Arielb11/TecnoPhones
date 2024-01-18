@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { Phone } from '../../models/phone';
 import { PhoneService } from '../../services/phone.service';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-phone',
@@ -30,7 +31,10 @@ export class PhoneComponent implements OnInit{
 
   eliminarPhone(id: any){
     this._phoneService.eliminarPhone(id).subscribe(data => {
-      console.log("Phone eliminado correctamente");
+      Swal.fire({
+        title: "iPhone eliminado correctamente",
+        icon: "success"
+      });
       this.obtenerPhones();
     }, error => {
       console.log(error);

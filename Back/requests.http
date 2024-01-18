@@ -1,14 +1,18 @@
 ###
-POST http://localhost:3000/api/phones HTTP/1.1
+POST http://localhost:3000/api/users/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "modelo": "Iphone 15",
-    "estado": "Nuevo",
-    "bateria": "100",
-    "capacidad": "128",
-    "observaciones": "Black",
-    "valor": "1000"    
+    "username": "cccc",
+    "password": "12345"   
+}
+###
+POST http://localhost:3000/api/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "cucu",
+    "password": "123456789"   
 }
 
 ###
@@ -32,3 +36,11 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:9000/api/phones/65a1a6f7d97a2cc00c5286e6 HTTP/1.1
+
+###
+POST http://localhost:3000/api/users/authenticate HTTP/1.1
+Content-Type: application/json
+{
+    "username": "ariel",
+    "password": "ariel123"    
+}

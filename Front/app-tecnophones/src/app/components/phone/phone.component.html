@@ -21,10 +21,10 @@
                           <tr *ngFor="let phone of listPhones">
                             <td>{{ phone.modelo }}</td>
                             <td>{{ phone.estado }}</td>
-                            <td>{{ phone.bateria }}</td>
-                            <td>{{ phone.capacidad }}</td>
+                            <td>{{ phone.bateria}}</td>
+                            <td>{{ phone.capacidad}}</td>
                             <td>{{ phone.observaciones }}</td>
-                            <td>{{ phone.valor }}</td>
+                            <td>{{ phone.valor | currency:'USD' }}</td>
                             <td>
                                 <i [routerLink]="['/editar-phone', phone._id]" class="fas fa-solid fa-pen-to-square text-primary"></i>
                                 <i (click)="eliminarPhone(phone._id)" class="fas fa-solid fa-trash text-danger"></i>

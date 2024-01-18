@@ -1,0 +1,8 @@
+<form [formGroup]="userForm" (submit)="submit()">
+    <h1 class="h3 mb-3 fw-normal">Sign in</h1>
+
+    <input formControlName="username" type="text" class="form-control">
+    <input formControlName="password" type="password" class="form-control">
+
+    <button class="w-100 btn btn-lg-primary" type="submit">Ingresar</button>
+</form>

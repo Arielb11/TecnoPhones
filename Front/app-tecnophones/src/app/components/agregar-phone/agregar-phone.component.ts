@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Phone } from '../../models/phone';
 import { PhoneService } from '../../services/phone.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregar-phone',
@@ -45,7 +46,10 @@ export class AgregarPhoneComponent implements OnInit{
 
     if (this.id !== null){
       this._phoneService.editarPhone(this.id, PHONE).subscribe(data => {
-        console.log("Se modifico el phone correctamente");
+        Swal.fire({
+          title: "iPhone editado correctamente",
+          icon: "success"
+        });
         this.router.navigate(['/phone']);
       }, error => {
         console.log(error);
@@ -53,7 +57,10 @@ export class AgregarPhoneComponent implements OnInit{
       })
     } else {
       this._phoneService.guardarPhone(PHONE).subscribe(data => {
-        console.log("Se agrego el phone correctamente");
+        Swal.fire({
+          title: "iPhone agregado correctamente",
+          icon: "success"
+        });
         this.router.navigate(['/phone']);
       }, error => {
         console.log(error);
