@@ -9,14 +9,14 @@ module.exports = {
             .catch((error) => res.json({message: error}));
     },
 
-    get: async(req,res) => {
+    get: async(req, res) => {
         phoneModel
             .find()
             .then((data) => res.json(data))
             .catch((error) => res.json({message: error}));
     },
 
-    getByID: async(req,res) => {
+    getByID: async(req, res) => {
         const {id} = req.params;
         phoneModel
             .findById(id)
@@ -24,7 +24,7 @@ module.exports = {
             .catch((error) => res.json({message: error}));
     },
 
-    update: async(req,res) => {
+    update: async(req, res) => {
         const {id} = req.params;
         const {modelo, estado, bateria, capacidad, observaciones, valor} = req.body;
         phoneModel
@@ -33,7 +33,7 @@ module.exports = {
             .catch((error) => res.json({message: error}));
     }, 
 
-    delete: async(req,res) => {
+    delete: async(req, res) => {
         const {id} = req.params;
         phoneModel
             .deleteOne({ _id: id})

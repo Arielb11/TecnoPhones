@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@angular/cli": "^17.0.10"
+    "@angular/cli": "^17.0.10",
+    "sweetalert2": "^11.10.3"
   }
 }

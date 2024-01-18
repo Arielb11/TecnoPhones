@@ -1,3 +1,18 @@
 export class Phone {
-    constructor (public modelo?:string, public estado?:string, public bateria?:number, public capacidad?:number, public observaciones?:string, public valor?:number) {}
+    _id?:string;
+    modelo:string;
+    estado:string;
+    bateria:number;
+    capacidad:number;
+    observaciones:string;
+    valor:number;
+
+    constructor (modelo:string, estado:string, bateria:number, capacidad:number, observaciones:string, valor:number) {
+        this.modelo = modelo;
+        this.estado = estado;
+        this.bateria = bateria;
+        this.capacidad = capacidad;
+        this.observaciones = observaciones;
+        this.valor = valor;
+    }
 }
