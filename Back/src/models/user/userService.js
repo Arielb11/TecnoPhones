@@ -62,39 +62,3 @@ module.exports = {
          })
     }
 }
-/*module.exports.loginuserDBService = (userDetails)=> 
-{
-   return new Promise(function myFn(resolve, reject) 
-   {
-      userModel.findOne({ username: userDetails.email},function getresult(errorvalue, result)
-      {
-         if(errorvalue)
-         {
-            reject({status: false, msg: "Invaild Data"});
-         }
-         else
-         {
-            if(result !=undefined &&  result !=null)
-            {
-               if(result.password== userDetails.password)
-               {
-                  resolve({status: true,msg: "Student Validated Successfully"});
-               }
-               else
-               {
-                  reject({status: false,msg: "Student Validated failed"});
-               }
-            }
-            else
-            {
-               reject({status: false,msg: "Student Error Detailssss"});
-            }
-         }
-      
-      });
-      
-   });
-}*/
-
-// npm  i simple-encryptor
-
