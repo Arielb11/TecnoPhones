@@ -1,16 +1,94 @@
 body {
-    background: linear-gradient(0deg, #ac7c3a 0%, #000000 78%);
-    height: 100vh;
-    display: flex;
+  background: linear-gradient(0deg, #ac7c3a 0%, #000000 78%);
+  height: 100vh;
+  display: flex;
+  flex-direction: column; /* Cambia la dirección del flexbox a columna */
+  justify-content: center;
+  align-items: center;
+  margin: 150px 0 0; /* Ajusta el margen superior según tus necesidades */
+  padding: 0;
+  background-attachment: fixed;
+}
+
+/*Logo Principal*/
+
+.contenedor-logo {
+  width: 100%;
+  justify-content: center;
+}
+
+.Logo {
+  max-width: 100%;
+  max-height: 200px;
+  height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
+  margin-left: 130px;
+}
+
+/*------------------*/
+/*Botones 1 y 2*/
+
+.contenedor-botones {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.imagen1 {
+  width: 500px;
+  height: 300px;
+  margin-right: 55px;
+  border: 3px solid #ac7c3a; /* Añade un borde blanco de 3 píxeles */
+}
+
+.imagen2 {
+  width: 500px;
+  height: 300px;
+  border: 3px solid #ac7c3a; /* Añade un borde blanco de 3 píxeles */
+}
+
+/*------------------*/
+/*Boton 3*/
+
+.contenedor-boton {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.imagen3 {
+  width: 500px;
+  height: 250px;
+  margin-top: 30px;
+  border: 3px solid #ac7c3a; /* Añade un borde blanco de 3 píxeles */
+}
+
+/* Media Query para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  .contenedor-logo {
+    margin-left: 0;
+    margin-top: 0; /* Elimina completamente el margen superior del contenedor del logo */
   }
-  
-  .imagen {
-    width: 600px;
-    height: 180px;
-    margin-left: 370px;
+
+  .Logo {
+    max-width: 100%;
+    max-height: 150px;
+    margin-bottom: 20px;
+    margin-left: 0;
   }
-  
-  .conteiner {
-    display: flex;
+
+  .contenedor-botones,
+  .contenedor-boton {
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
     justify-content: center;
   }
+
+  .imagen1,
+  .imagen2,
+  .imagen3 {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+}
