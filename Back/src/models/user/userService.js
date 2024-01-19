@@ -35,6 +35,7 @@ module.exports = {
             })
         }      
     },
+    
 
     buscar: async (req, res) => {
          const user = await userModel.findOne({username:req.body.username})
@@ -57,8 +58,15 @@ module.exports = {
             maxAge:24*60*60*1000 //Por un dia
          })
 
-         res.send({
-            message: "Success"
+         res.json({
+            message: "Success",
+            token: createToken(user)
          })
     }
+}
+function createToken(user){
+        const payload={
+            _id:user._id
+        }
+        return jwt.sign(payload, 'adrian');
 }

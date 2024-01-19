@@ -5,7 +5,7 @@ body {
   flex-direction: column; /* Cambia la dirección del flexbox a columna */
   justify-content: center;
   align-items: center;
-  margin: 150px 0 0; /* Ajusta el margen superior según tus necesidades */
+  margin: 70px 0 0; /* Ajusta el margen superior según tus necesidades */
   padding: 0;
   background-attachment: fixed;
 }

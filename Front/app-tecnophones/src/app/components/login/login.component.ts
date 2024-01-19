@@ -39,6 +39,8 @@ export class LoginComponent implements OnInit{
         title: "Has podido ingresar!",
         icon: "success"
       });
+      localStorage.setItem('token', data.token);
+      console.log(data.token);
       this.router.navigate(['/phone']);
     }, error => {
       console.log(error);
