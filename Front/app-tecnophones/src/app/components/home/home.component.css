@@ -1,13 +1,79 @@
 body {
   background: linear-gradient(0deg, #ac7c3a 0%, #000000 78%);
-  height: 100vh;
   display: flex;
   flex-direction: column; /* Cambia la dirección del flexbox a columna */
   justify-content: center;
   align-items: center;
-  margin: 70px 0 0; /* Ajusta el margen superior según tus necesidades */
+  /*margin: 75px 0 0; /* Ajusta el margen superior según tus necesidades */
   padding: 0;
   background-attachment: fixed;
+}
+
+/*boton Login*/
+
+.btn-login {
+  padding: 0;
+  list-style-type: none;
+  position: absolute;
+  left: 20px; /* Ajusta la posición izquierda según tus necesidades */
+  top: 5%; /* Centra verticalmente el botón */
+  transform: translateY(-50%);
+  text-decoration: none; /* Elimina el subrayado */
+  color: #333;
+}
+
+li {
+  font-size: 15px;
+  width: 4em;
+  height: 1em;
+  color: orange;
+  border-left: 0.08em solid;
+  position: relative;
+  margin-top: 0.8em;
+  cursor: pointer;
+}
+
+li::before,
+li::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  border-left: inherit;
+  z-index: -1;
+}
+
+li::before {
+  height: 80%;
+  top: 10%;
+  left: calc(-0.15em - 0.08em * 2);
+  filter: brightness(0.8);
+}
+
+li::after {
+  height: 60%;
+  top: 20%;
+  left: calc(-0.15em * 2 - 0.08em * 3);
+  filter: brightness(0.6);
+}
+
+li span {
+  position: relative;
+  height: 120%;
+  top: -10%;
+  box-sizing: border-box;
+  border: 0.08em solid;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  text-transform: capitalize;
+  transform: translateX(calc(-0.15em * 3 - 0.08em * 2));
+  transition: 0.3s;
+}
+
+li:hover span {
+  transform: translateX(0.15em);
 }
 
 /*Logo Principal*/
@@ -15,13 +81,13 @@ body {
 .contenedor-logo {
   width: 100%;
   justify-content: center;
+  display: flex;
 }
 
 .Logo {
   max-width: 100%;
   max-height: 200px;
   height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
-  margin-left: 130px;
 }
 
 /*------------------*/
@@ -36,14 +102,16 @@ body {
 .imagen1 {
   width: 500px;
   height: 300px;
-  margin-right: 55px;
+  margin-right: 70px;
   border: 3px solid #ac7c3a; /* Añade un borde blanco de 3 píxeles */
+  border-radius: 25px;
 }
 
 .imagen2 {
   width: 500px;
   height: 300px;
   border: 3px solid #ac7c3a; /* Añade un borde blanco de 3 píxeles */
+  border-radius: 25px;
 }
 
 /*------------------*/
@@ -57,16 +125,25 @@ body {
 
 .imagen3 {
   width: 500px;
-  height: 250px;
-  margin-top: 30px;
+  height: 300px;
+  margin-top: 10px;
   border: 3px solid #ac7c3a; /* Añade un borde blanco de 3 píxeles */
+  border-radius: 25px;
+}
+
+/*------------------*/
+/*Sobre Nosotros*/
+
+.sobre-nosotros {
+  text-align: center;
+  margin-top: 50px;
 }
 
 /* Media Query para dispositivos móviles */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   .contenedor-logo {
     margin-left: 0;
-    margin-top: 0; /* Elimina completamente el margen superior del contenedor del logo */
+    /*margin-top: 75px; /* Elimina completamente el margen superior del contenedor del logo */
   }
 
   .Logo {
@@ -90,5 +167,18 @@ body {
     width: 100%;
     height: auto;
     margin: 0;
+  }
+
+  .btn-login {
+    position: fixed;
+    bottom: 2%;
+    left: 2%;
+  }
+
+  li {
+    font-size: 4vw;
+    width: 90%;
+    height: 4vh;
+    margin-top: 3vw;
   }
 }
