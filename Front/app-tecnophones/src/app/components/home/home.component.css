@@ -1,458 +1,92 @@
-body {
-  background-color: #dbd7d7;
-  display: flex;
-  flex-direction: column; /* Cambia la dirección del flexbox a columna */
-  justify-content: center;
-  align-items: center;
-  /*margin: 75px 0 0; /* Ajusta el margen superior según tus necesidades */
+* {
+  margin: 0;
   padding: 0;
-  background-attachment: fixed;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
-/*boton Login*/
-
-.btn-login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+body {
+  min-height: 100dvh;
+  background-color: #dbd7d7;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
-.mi-boton {
-  font-size: 24px;
-  background-color: #3498db00;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  padding: 15px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
+h1, h2, h3, h4 {
+  text-wrap: balance;
 }
 
-.mi-boton:hover {
-  background-color: #297fb900;
+p {
+  text-wrap: pretty;
 }
 
-/*Logo Principal*/
-
-.contenedor-logo {
+/*------------------------------------------------------------------------------*/
+.header {
   background-color: #18181b;
-  width: 100%;
-  justify-content: center;
-  display: flex;
+  text-align: center;
 }
 
-.Logo {
+.header img {
   max-width: 100%;
-  max-height: 200px;
-  height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
+  height: 120px;
 }
-
-/*------------------*/
-/*Boton 1*/
-
-.contenedor-boton1 {
-  display: flex;
-  justify-content: left;
-  margin-top: 50px;
-  margin-left: 100px;
-}
-
-.imagen1 {
-  width: 500px;
-  height: 300px;
-  margin-right: 70px;
-  border: 3px solid #5e5e5e; /* Añade un borde blanco de 3 píxeles */
-  border-radius: 25px;
-}
-
-/*TARJETA IPHONES NUEVOS*/
-.tarjeta1 {
-  display: flex;
-  flex-direction: column;
-  isolation: isolate;
-  position: relative;
-  width: 30rem;
-  height: 15rem;
-  background: #29292c;
-  border-radius: 1rem;
-  overflow: hidden;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 16px;
-  --gradient: linear-gradient(to bottom, #e6a347, #a37433, #5a3b1c);
-  --color: #aa7831;
-  margin-top: 30px;
-}
-
-.tarjeta1:before {
-  position: absolute;
-  content: "";
-  inset: 0.0625rem;
-  border-radius: 0.9375rem;
-  background: #18181b;
-  z-index: 2;
-}
-
-.tarjeta1:after {
-  position: absolute;
-  content: "";
-  width: 0.25rem;
-  inset: 0.65rem auto 0.65rem 0.5rem;
-  border-radius: 0.125rem;
-  background: var(--gradient);
-  transition: transform 300ms ease;
-  z-index: 4;
-}
-
-.tarjeta1:hover:after {
-  transform: translateX(0.15rem);
-}
-
-.notititle {
-  color: var(--color);
-  padding: 0.65rem 0.25rem 0.4rem 1.25rem;
-  font-weight: 500;
-  font-size: 1.1rem;
-  transition: transform 300ms ease;
-  z-index: 5;
-}
-
-.tarjeta1:hover .notititle {
-  transform: translateX(0.15rem);
-}
-
-.notibody {
-  color: #99999d;
-  padding: 0 1.25rem;
-  transition: transform 300ms ease;
-  z-index: 5;
-}
-
-.tarjeta1:hover .notibody {
-  transform: translateX(0.25rem);
-}
-
-.notiglow,
-.notiborderglow {
-  position: absolute;
-  width: 20rem;
-  height: 20rem;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(
-    circle closest-side at center,
-    white,
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 300ms ease;
-}
-
-.notiglow {
-  z-index: 3;
-}
-
-.notiborderglow {
-  z-index: 1;
-}
-
-.tarjeta1:hover .notiglow {
-  opacity: 0.1;
-}
-
-.tarjeta1:hover .notiborderglow {
-  opacity: 0.1;
-}
-
-.note {
-  color: var(--color);
-  position: fixed;
-  top: 80%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  font-size: 0.9rem;
-  width: 75%;
-}
-
-/*------------------*/
-/*Boton 2*/
-
-.contenedor-boton2 {
-  display: flex;
-  justify-content: right;
-  margin-top: 50px;
-  margin-right: 100px;
-}
-
-.imagen2 {
-  width: 500px;
-  height: 300px;
-  border: 3px solid #5e5e5e; /* Añade un borde blanco de 3 píxeles */
-  border-radius: 25px;
-  justify-content: left;
-  margin-left: 70px;
-}
-
-/*TARJETA IPHONES USADOS*/
-
-.tarjeta2 {
-  display: flex;
-  flex-direction: column;
-  isolation: isolate;
-  position: relative;
-  width: 30rem;
-  height: 15rem;
-  background: #29292c;
-  border-radius: 1rem;
-  overflow: hidden;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 16px;
-  --gradient: linear-gradient(to bottom, #e6a347, #a37433, #5a3b1c);
-  --color: #aa7831;
-  margin-top: 30px;
-}
-
-.tarjeta2:before {
-  position: absolute;
-  content: "";
-  inset: 0.0625rem;
-  border-radius: 0.9375rem;
-  background: #18181b;
-  z-index: 2;
-}
-
-.tarjeta2:after {
-  position: absolute;
-  content: "";
-  width: 0.25rem;
-  inset: 0.65rem auto 0.65rem 0.5rem;
-  border-radius: 0.125rem;
-  background: var(--gradient);
-  transition: transform 300ms ease;
-  z-index: 4;
-}
-
-.tarjeta2:hover:after {
-  transform: translateX(0.15rem);
-}
-
-.notititle2 {
-  color: var(--color);
-  padding: 0.65rem 0.25rem 0.4rem 1.25rem;
-  font-weight: 500;
-  font-size: 1.1rem;
-  transition: transform 300ms ease;
-  z-index: 5;
-}
-
-.tarjeta2:hover .notititle2 {
-  transform: translateX(0.15rem);
-}
-
-.notibody2 {
-  color: #99999d;
-  padding: 0 1.25rem;
-  transition: transform 300ms ease;
-  z-index: 5;
-}
-
-.tarjeta2:hover .notibody2 {
-  transform: translateX(0.25rem);
-}
-
-.notiglow2,
-.notiborderglow2 {
-  position: absolute;
-  width: 20rem;
-  height: 20rem;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(
-    circle closest-side at center,
-    white,
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 300ms ease;
-}
-
-.notiglow2 {
-  z-index: 3;
-}
-
-.notiborderglow2 {
-  z-index: 1;
-}
-
-.tarjeta2:hover .notiglow2 {
-  opacity: 0.1;
-}
-
-.tarjeta2:hover .notiborderglow2 {
-  opacity: 0.1;
-}
-
-.note {
-  color: var(--color);
-  position: fixed;
-  top: 80%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  font-size: 0.9rem;
-  width: 75%;
-}
-
-/*------------------*/
-/*Boton 3*/
-
-.contenedor-boton3 {
-  display: flex;
-  justify-content: left;
-  margin-top: 50px;
-  margin-left: 100px;
-}
-
-.imagen3 {
-  width: 500px;
-  height: 300px;
-  margin-top: 10px;
-  border: 3px solid #5e5e5e; /* Añade un borde blanco de 3 píxeles */
-  border-radius: 25px;
-  margin-right: 70px;
-}
-
-/*TARJETA ACCESORIOS*/
-
-.tarjeta3 {
-  display: flex;
-  flex-direction: column;
-  isolation: isolate;
-  position: relative;
-  width: 30rem;
-  height: 15rem;
-  background: #29292c;
-  border-radius: 1rem;
-  overflow: hidden;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 16px;
-  --gradient: linear-gradient(to bottom, #e6a347, #a37433, #5a3b1c);
-  --color: #aa7831;
-  margin-top: 30px;
-  margin-right: 10px;
-}
-
-.tarjeta3:before {
-  position: absolute;
-  content: "";
-  inset: 0.0625rem;
-  border-radius: 0.9375rem;
-  background: #18181b;
-  z-index: 2;
-}
-
-.tarjeta3:after {
-  position: absolute;
-  content: "";
-  width: 0.25rem;
-  inset: 0.65rem auto 0.65rem 0.5rem;
-  border-radius: 0.125rem;
-  background: var(--gradient);
-  transition: transform 300ms ease;
-  z-index: 4;
-}
-
-.tarjeta3:hover:after {
-  transform: translateX(0.15rem);
-}
-
-.notititle3 {
-  color: var(--color);
-  padding: 0.65rem 0.25rem 0.4rem 1.25rem;
-  font-weight: 500;
-  font-size: 1.1rem;
-  transition: transform 300ms ease;
-  z-index: 5;
-}
-
-.tarjeta3:hover .notititle3 {
-  transform: translateX(0.15rem);
-}
-
-.notibody3 {
-  color: #99999d;
-  padding: 0 1.25rem;
-  transition: transform 300ms ease;
-  z-index: 5;
-}
-
-.tarjeta3:hover .notibody3 {
-  transform: translateX(0.25rem);
-}
-
-.notiglow3,
-.notiborderglow3 {
-  position: absolute;
-  width: 20rem;
-  height: 20rem;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(
-    circle closest-side at center,
-    white,
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 300ms ease;
-}
-
-.notiglow3 {
-  z-index: 3;
-}
-
-.notiborderglow3 {
-  z-index: 1;
-}
-
-.tarjeta3:hover .notiglow3 {
-  opacity: 0.1;
-}
-
-.tarjeta3:hover .notiborderglow3 {
-  opacity: 0.1;
-}
-
-.note {
-  color: var(--color);
-  position: fixed;
-  top: 80%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  font-size: 0.9rem;
-  width: 75%;
-}
-
-/*------------------*/
-/*Sobre Nosotros*/
-
-.sobre-nosotros {
-  text-align: center;
-  margin-top: 50px;
-}
-
-/*------------------*/
+/*------------------------------------------------------------------------------*/
 
 .slide {
   position: relative;
-  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
-  margin-bottom: 100px;
-  border-radius: 50px;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.64);
+  
+}
+
+.texto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #ffffff;
+  font-family: Syne;
+  
+}
+
+.texto2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #ffffff;
+  font-family: Syne;
+  
+}
+
+.texto3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #ffffff;
+  font-family: Syne;
+  
+}
+
+.texto,texto2,texto3 h2 {
+  font-size: 45px;
+  margin-bottom: 15px; /* Reducido para ajustar mejor */
+  font-size: 5rem;
+}
+
+.texto,texto2,texto3 p {
+  margin: 0; /* Elimina el margen predeterminado del párrafo */
+  font-size: 2rem;
 }
 
 .slide-inner {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: calc( 300px + 3em);
+  height: calc( 350px + 3em);
 }
 .slide-open:checked + .slide-item {
   position: static;
@@ -460,20 +94,23 @@ body {
 }
 .slide-item {
   position: absolute;
-  justify-content: left;
+  justify-content: center; /* Centra la imagen verticalmente */
   opacity: 0;
   -webkit-transition: opacity 0.6s ease-out;
   transition: opacity 0.6s ease-out;
 }
 .slide-item img {
   display: block;
-  height: 100%;
+  height: auto; /* Cambiado de 'height: 100%;' a 'height: auto;' */
   max-width: 100%;
+  margin: 0 auto; /* Centra la imagen horizontalmente */
+  object-fit: cover; /* Ajusta para llenar el contenedor manteniendo la relación de aspecto */
+  object-position: center center; /* Centra la imagen vertical y horizontalmente */
 }
 .slide-control {
   background: rgba(0, 0, 0, 0.28);
   border-radius: 50%;
-  color: #fff;
+  color: #ffffff;
   cursor: pointer;
   display: none;
   font-size: 40px;
@@ -550,48 +187,95 @@ body {
        -1px 0px 2px rgba(255, 255, 255, 0);
 }
 
+/*------------------------------------------------------------------------------*/
+.main {
+  padding: 10px;
+}
+/*------------------------------------------------------------------------------*/
+.footer {
+  background-color: #18181b;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+/*------------------------------------PANTALLAS MEDIANAS------------------------------------------*/
+@media (max-width: 1440px) {
 
-
-/* Media Query para dispositivos móviles */
-@media only screen and (max-width: 700px) {
-  .contenedor-logo {
-    margin-left: 0;
-    /*margin-top: 75px; /* Elimina completamente el margen superior del contenedor del logo */
+  .footer {
+      padding: 5px;
   }
 
-  .Logo {
+  .slide-inner {
+    height: calc( 300px + 3em);
+  }
+
+  .texto,texto2,texto3 h2 {
+    font-size: px;
+    margin-bottom: 15px; /* Reducido para ajustar mejor */
+    font-size: 5rem;
+  }
+  
+  .texto,texto2,texto3 p {
+    margin: 0; /* Elimina el margen predeterminado del párrafo */
+    font-size: 2rem;
+  }
+}
+
+/*------------------------------------PANTALLAS CELULARES------------------------------------------*/
+
+
+@media (max-width: 430px) {
+    .main {
+      padding: 10px;
+  }
+
+  .footer {
+      padding: 5px;
+  }
+
+  .header img {
     max-width: 100%;
-    max-height: 150px;
-    margin-bottom: 20px;
-    margin-left: 0;
-  }
-
-  .contenedor-botones,
-  .contenedor-boton {
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    justify-content: center;
-  }
-
-  .imagen1,
-  .imagen2,
-  .imagen3 {
-    width: 100%;
     height: auto;
-    margin: 0;
   }
 
-  .btn-login {
-    position: fixed;
-    bottom: 2%;
-    left: 2%;
+  .slide-inner {
+    height: calc( 170px + 3em);
   }
 
-  li {
-    font-size: 4vw;
-    width: 90%;
-    height: 4vh;
-    margin-top: 3vw;
+  .texto,texto2,texto3 h2 {
+    font-size: 45px;
+    margin-bottom: 15px; /* Reducido para ajustar mejor */
+    font-size: 3rem;
   }
+  
+  .texto,texto2,texto3 p {
+    margin: 0; /* Elimina el margen predeterminado del párrafo */
+    font-size: 0.8rem;
+  }
+}
+
+/*------------------------------------PANTALLAS CELULARES MAS CHICOS------------------------------------------*/
+
+
+@media (max-width: 375px) {
+    .main {
+      padding: 10px;
+  }
+
+  .footer {
+      padding: 6px;
+  }
+
+  .header img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .slide-inner {
+    height: calc( 150px + 3em);
+  }
+
 }
