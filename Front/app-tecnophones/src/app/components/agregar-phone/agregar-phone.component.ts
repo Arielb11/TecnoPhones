@@ -6,6 +6,11 @@ import { Phone } from '../../models/phone';
 import { PhoneService } from '../../services/phone.service';
 import Swal from 'sweetalert2';
 
+//Esto es para la imagen (para el evento)
+interface HtmlInputEvent extends Event {
+  target: HTMLInputElement & EventTarget;
+} 
+
 @Component({
   selector: 'app-agregar-phone',
   standalone: true,
@@ -17,6 +22,8 @@ export class AgregarPhoneComponent implements OnInit{
   phoneForm: FormGroup;
   titulo = 'Agregar';
   id: string | null;
+  file!: File;
+  photoSelected!: string | ArrayBuffer | null; //Archivo para mostrar la imagen subida
 
   constructor (private fb: FormBuilder, private router: Router, private _phoneService: PhoneService, private aRouter: ActivatedRoute) {
     this.phoneForm = this.fb.group({
@@ -35,39 +42,35 @@ export class AgregarPhoneComponent implements OnInit{
   }
 
   agregarPhone(){
-    const PHONE:Phone = {
-      modelo: this.phoneForm.get('modelo')?.value,
-      estado: this.phoneForm.get('estado')?.value,
-      bateria: this.phoneForm.get('bateria')?.value,
-      capacidad: this.phoneForm.get('capacidad')?.value,
-      observaciones: this.phoneForm.get('observaciones')?.value,
-      valor: this.phoneForm.get('valor')?.value
-    }
-
     if (this.id !== null){
-      this._phoneService.editarPhone(this.id, PHONE).subscribe(data => {
-        Swal.fire({
-          title: "iPhone editado correctamente",
-          icon: "success"
-        });
-        this.router.navigate(['/phone']);
-      }, error => {
-        console.log(error);
-        this.phoneForm.reset();
-      })
+      this._phoneService.editarPhone(this.id, this.phoneForm.get('modelo')?.value, this.phoneForm.get('estado')?.value, 
+          this.phoneForm.get('bateria')?.value, this.phoneForm.get('capacidad')?.value, 
+          this.phoneForm.get('observaciones')?.value, this.phoneForm.get('valor')?.value, this.file)
+          .subscribe(data => {
+            Swal.fire({
+              title: "iPhone editado correctamente",
+              icon: "success"
+            });
+            this.router.navigate(['/phone']);
+          }, error => {
+            console.log(error);
+            this.phoneForm.reset();
+          })
     } else {
-      this._phoneService.guardarPhone(PHONE).subscribe(data => {
-        Swal.fire({
-          title: "iPhone agregado correctamente",
-          icon: "success"
-        });
-        this.router.navigate(['/phone']);
-      }, error => {
-        console.log(error);
-        this.phoneForm.reset();
+      this._phoneService.guardarPhone(this.phoneForm.get('modelo')?.value, this.phoneForm.get('estado')?.value, 
+          this.phoneForm.get('bateria')?.value, this.phoneForm.get('capacidad')?.value, 
+          this.phoneForm.get('observaciones')?.value, this.phoneForm.get('valor')?.value, this.file)
+          .subscribe(data => {
+            Swal.fire({
+              title: "iPhone agregado correctamente",
+              icon: "success"
+            });
+            this.router.navigate(['/phone']);
+          }, error => {
+            console.log(error);
+            this.phoneForm.reset();
       })
     }
-    
   }
 
   esEditar() {
@@ -81,8 +84,24 @@ export class AgregarPhoneComponent implements OnInit{
           capacidad: data.capacidad,
           observaciones: data.observaciones,
           valor: data.valor,
+          imagePath: this.file,
         })
       })
+    }
+  }
+
+  onPhotoSelected(event: HtmlInputEvent): void {
+    // El if es para corroborar si se subio una imagen
+    if (event.target.files && event.target.files[0]) {
+      //Llena la propiedad file cuando existe un archivo
+      this.file = <File>event.target.files[0]; //Sube el primer archivo que exista
+
+      //Esto es para mostrar en pantalla la foto subida
+      const reader = new FileReader();
+      reader.onload = e => {
+        this.photoSelected = reader.result;
+      }
+      reader.readAsDataURL(this.file);
     }
   }
 

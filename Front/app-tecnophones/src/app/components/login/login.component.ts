@@ -48,4 +48,9 @@ export class LoginComponent implements OnInit{
     })
   }
 
+  onClickLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
+
 }

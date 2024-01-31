@@ -9,6 +9,7 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public')); //pone en publico para que se puedan visualizar las imagenes
 app.use(routes);
 app.use(cors());
 

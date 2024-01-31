@@ -24,6 +24,10 @@ const phoneSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-})
+    imagePath: {
+        type: String,
+        required: true
+    } 
+}, {versionKey:false})
 
 module.exports = mongoose.model('Phone', phoneSchema);
