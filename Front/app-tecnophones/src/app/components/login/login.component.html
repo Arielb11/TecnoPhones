@@ -1,8 +1,28 @@
-<form [formGroup]="userForm" (submit)="submit()">
-    <h1 class="h3 mb-3 fw-normal">Sign in</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.component.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="login-container">
+        <form [formGroup]="userForm" (submit)="submit()" class="login-form">
+            <h1>Login</h1>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input formControlName="username" type="text" class="form-control">
+            </div>
 
-    <input formControlName="username" type="text" class="form-control">
-    <input formControlName="password" type="password" class="form-control">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input formControlName="password" type="password" class="form-control">
+            </div>
 
-    <button class="w-100 btn btn-lg-primary" type="submit">Ingresar</button>
-</form>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
+
