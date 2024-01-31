@@ -33,6 +33,10 @@
                             <input type="number" formControlName="valor" class="form-control form-control-lg" placeholder="Valor">
                         </div>
                         <div class="mb-3">
+                            <input type="file"  class="d-none" (change)="onPhotoSelected($any($event))" #photoInput>
+                            <img [src]="photoSelected || 'assets/img/no-image.png'" class="img-fluid" alt="" (click)="photoInput.click()">
+                        </div>
+                        <div class="mb-3">
                             <button class="btn btn-secondary btn-lg float-start" routerLink="/phone">VOLVER</button>
                             <button class="btn btn-success btn-lg float-end" type="submit" [disabled]="phoneForm.invalid">ACEPTAR</button>
                         </div>

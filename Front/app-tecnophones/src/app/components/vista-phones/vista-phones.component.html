@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-4 p-4" *ngFor="let phone of phones">
+        <div class="card">
+            <div class="card-header">
+                {{phone.modelo}}
+            </div>
+            <img [src]="'http://localhost:3000' + phone.imagePath" alt="" class="img-card-top w-100">
+            <div class="card-body">
+                <p>{{phone.estado}}</p>
+                <p>{{phone.bateria}}</p>
+                <p>{{phone.capacidad}}</p>
+                <p>{{phone.observaciones}}</p>
+                <p>{{phone.valor}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
