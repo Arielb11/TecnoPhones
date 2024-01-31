@@ -1,134 +1,595 @@
-body {
-  background: linear-gradient(0deg, #ac7c3a 0%, #000000 78%);
-  display: flex;
-  flex-direction: column; /* Cambia la dirección del flexbox a columna */
-  justify-content: center;
-  align-items: center;
-  /*margin: 75px 0 0; /* Ajusta el margen superior según tus necesidades */
+* {
+  margin: 0;
   padding: 0;
-  background-attachment: fixed;
-}
-
-/*boton Login*/
-
-.btn-login {
-  padding: 0;
-  list-style-type: none;
-  position: absolute;
-  left: 20px; /* Ajusta la posición izquierda según tus necesidades */
-  top: 5%; /* Centra verticalmente el botón */
-  transform: translateY(-50%);
-  text-decoration: none; /* Elimina el subrayado */
-  color: #333;
-}
-
-li {
-  font-size: 15px;
-  width: 4em;
-  height: 1em;
-  color: orange;
-  border-left: 0.08em solid;
-  position: relative;
-  margin-top: 0.8em;
-  cursor: pointer;
-}
-
-li::before,
-li::after {
-  content: "";
-  position: absolute;
-  width: inherit;
-  border-left: inherit;
-  z-index: -1;
-}
-
-li::before {
-  height: 80%;
-  top: 10%;
-  left: calc(-0.15em - 0.08em * 2);
-  filter: brightness(0.8);
-}
-
-li::after {
-  height: 60%;
-  top: 20%;
-  left: calc(-0.15em * 2 - 0.08em * 3);
-  filter: brightness(0.6);
-}
-
-li span {
-  position: relative;
-  height: 120%;
-  top: -10%;
   box-sizing: border-box;
-  border: 0.08em solid;
-  background-color: #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: sans-serif;
-  text-transform: capitalize;
-  transform: translateX(calc(-0.15em * 3 - 0.08em * 2));
-  transition: 0.3s;
+  min-width: 0;
 }
 
-li:hover span {
-  transform: translateX(0.15em);
+body {
+  min-height: 100dvh;
+  background-color: #dbd7d7;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  position: relative;
+  padding-bottom: 3em;
 }
 
-/*Logo Principal*/
-
-.contenedor-logo {
-  width: 100%;
-  justify-content: center;
-  display: flex;
+h1, h2, h3, h4 {
+  text-wrap: balance;
 }
 
-.Logo {
+p {
+  text-wrap: pretty;
+}
+
+/*------------------------------------------------------------------------------*/
+.header {
+  background-color: #18181b;
+  text-align: center;
+}
+
+.header img {
   max-width: 100%;
-  max-height: 200px;
-  height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
+  height: 120px;
+}
+/*------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------*/
+.main {
+  padding: 10px;
 }
 
-/*------------------*/
-/*Botones 1 y 2*/
 
-.contenedor-botones {
+.slide {
+  position: relative;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.64);
+  
+}
+
+.texto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #ffffff;
+  font-family: Syne;
+  
+}
+
+.texto2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #ffffff;
+  font-family: Syne;
+  
+}
+
+.texto3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #ffffff;
+  font-family: Syne;
+  
+}
+
+.texto,texto2,texto3 h2 {
+  font-size: 45px;
+  margin-bottom: 15px; /* Reducido para ajustar mejor */
+  font-size: 5rem;
+}
+
+.texto,texto2,texto3 p {
+  margin: 0; /* Elimina el margen predeterminado del párrafo */
+  font-size: 2rem;
+}
+
+.slide-inner {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: calc( 350px + 3em);
+}
+.slide-open:checked + .slide-item {
+  position: static;
+  opacity: 100;
+}
+.slide-item {
+  position: absolute;
+  justify-content: center; /* Centra la imagen verticalmente */
+  opacity: 0;
+  -webkit-transition: opacity 0.6s ease-out;
+  transition: opacity 0.6s ease-out;
+}
+.slide-item img {
+  display: block;
+  height: auto; /* Cambiado de 'height: 100%;' a 'height: auto;' */
+  max-width: 100%;
+  margin: 0 auto; /* Centra la imagen horizontalmente */
+  object-fit: cover; /* Ajusta para llenar el contenedor manteniendo la relación de aspecto */
+  object-position: center center; /* Centra la imagen vertical y horizontalmente */
+}
+.slide-control {
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: 50%;
+  color: #ffffff;
+  cursor: pointer;
+  display: none;
+  font-size: 40px;
+  height: 40px;
+  line-height: 35px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  cursor: pointer;
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  text-align: center;
+  width: 40px;
+  z-index: 10;
+}
+.slide-control.prev {
+  left: 2%;
+}
+.slide-control.next {
+  right: 2%;
+}
+.slide-control:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #aaaaaa;
+}
+#slide-1:checked ~ .control-1,
+#slide-2:checked ~ .control-2,
+#slide-3:checked ~ .control-3 {
+  display: block;
+}
+.slide-indicador {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 2%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+}
+.slide-indicador li {
+  display: inline-block;
+  margin: 0 5px;
+}
+.slide-circulo {
+  color: #828282;
+  cursor: pointer;
+  display: block;
+  font-size: 35px;
+}
+.slide-circulo:hover {
+  color: #aaaaaa;
+}
+#slide-1:checked ~ .control-1 ~ .slide-indicador 
+   li:nth-child(1) .slide-circulo,
+#slide-2:checked ~ .control-2 ~ .slide-indicador 
+    li:nth-child(2) .slide-circulo,
+#slide-3:checked ~ .control-3 ~ .slide-indicador 
+    li:nth-child(3) .slide-circulo {
+  color: #428bca;
+}
+#titulo {
+  width: 100%;
+  position: absolute;
+  padding: 0px;
+  margin: 0px auto;
+  text-align: center;
+  font-size: 27px;
+  color: rgba(255, 255, 255, 1);
+  font-family: 'Open Sans', sans-serif;
+  z-index: 9999;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), 
+       -1px 0px 2px rgba(255, 255, 255, 0);
+}
+
+/*------------------------------------------------------------------------------*/
+/*------------------*/
+/*Boton 1*/
+
+.contenedor-boton1 {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: left;
   margin-top: 50px;
+  margin-left: 100px;
 }
 
 .imagen1 {
   width: 500px;
   height: 300px;
   margin-right: 70px;
-  border: 3px solid #ac7c3a; /* Añade un borde blanco de 3 píxeles */
+  border: 3px solid #5e5e5e; /* Añade un borde blanco de 3 píxeles */
   border-radius: 25px;
+  flex-basis: 100px;
+  flex-grow: 1;
+}
+
+/*TARJETA IPHONES NUEVOS*/
+.tarjeta1 {
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  position: relative;
+  width: 30rem;
+  height: 15rem;
+  background: #29292c;
+  border-radius: 1rem;
+  overflow: hidden;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 16px;
+  --gradient: linear-gradient(to bottom, #e6a347, #a37433, #5a3b1c);
+  --color: #aa7831;
+  margin-top: 30px;
+}
+
+.tarjeta1:before {
+  position: absolute;
+  content: "";
+  inset: 0.0625rem;
+  border-radius: 0.9375rem;
+  background: #18181b;
+  z-index: 2;
+}
+
+.tarjeta1:after {
+  position: absolute;
+  content: "";
+  width: 0.25rem;
+  inset: 0.65rem auto 0.65rem 0.5rem;
+  border-radius: 0.125rem;
+  background: var(--gradient);
+  transition: transform 300ms ease;
+  z-index: 4;
+}
+
+.tarjeta1:hover:after {
+  transform: translateX(0.15rem);
+}
+
+.notititle {
+  color: var(--color);
+  padding: 0.65rem 0.25rem 0.4rem 1.25rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: transform 300ms ease;
+  z-index: 5;
+}
+
+.tarjeta1:hover .notititle {
+  transform: translateX(0.15rem);
+}
+
+.notibody {
+  color: #99999d;
+  padding: 0 1.25rem;
+  transition: transform 300ms ease;
+  z-index: 5;
+}
+
+.tarjeta1:hover .notibody {
+  transform: translateX(0.25rem);
+}
+
+.notiglow,
+.notiborderglow {
+  position: absolute;
+  width: 20rem;
+  height: 20rem;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle closest-side at center,
+    white,
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.notiglow {
+  z-index: 3;
+}
+
+.notiborderglow {
+  z-index: 1;
+}
+
+.tarjeta1:hover .notiglow {
+  opacity: 0.1;
+}
+
+.tarjeta1:hover .notiborderglow {
+  opacity: 0.1;
+}
+
+.note {
+  color: var(--color);
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 0.9rem;
+  width: 75%;
+}
+
+/*------------------*/
+/*Boton 2*/
+
+.contenedor-boton2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: right;
+  margin-top: 50px;
+  margin-right: 100px;
 }
 
 .imagen2 {
   width: 500px;
   height: 300px;
-  border: 3px solid #ac7c3a; /* Añade un borde blanco de 3 píxeles */
+  border: 3px solid #5e5e5e; /* Añade un borde blanco de 3 píxeles */
   border-radius: 25px;
+  justify-content: left;
+  margin-left: 70px;
+  flex-basis: 100px;
+  flex-grow: 1;
+}
+
+/*TARJETA IPHONES USADOS*/
+
+.tarjeta2 {
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  position: relative;
+  width: 30rem;
+  height: 15rem;
+  background: #29292c;
+  border-radius: 1rem;
+  overflow: hidden;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 16px;
+  --gradient: linear-gradient(to bottom, #e6a347, #a37433, #5a3b1c);
+  --color: #aa7831;
+  margin-top: 30px;
+}
+
+.tarjeta2:before {
+  position: absolute;
+  content: "";
+  inset: 0.0625rem;
+  border-radius: 0.9375rem;
+  background: #18181b;
+  z-index: 2;
+}
+
+.tarjeta2:after {
+  position: absolute;
+  content: "";
+  width: 0.25rem;
+  inset: 0.65rem auto 0.65rem 0.5rem;
+  border-radius: 0.125rem;
+  background: var(--gradient);
+  transition: transform 300ms ease;
+  z-index: 4;
+}
+
+.tarjeta2:hover:after {
+  transform: translateX(0.15rem);
+}
+
+.notititle2 {
+  color: var(--color);
+  padding: 0.65rem 0.25rem 0.4rem 1.25rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: transform 300ms ease;
+  z-index: 5;
+}
+
+.tarjeta2:hover .notititle2 {
+  transform: translateX(0.15rem);
+}
+
+.notibody2 {
+  color: #99999d;
+  padding: 0 1.25rem;
+  transition: transform 300ms ease;
+  z-index: 5;
+}
+
+.tarjeta2:hover .notibody2 {
+  transform: translateX(0.25rem);
+}
+
+.notiglow2,
+.notiborderglow2 {
+  position: absolute;
+  width: 20rem;
+  height: 20rem;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle closest-side at center,
+    white,
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.notiglow2 {
+  z-index: 3;
+}
+
+.notiborderglow2 {
+  z-index: 1;
+}
+
+.tarjeta2:hover .notiglow2 {
+  opacity: 0.1;
+}
+
+.tarjeta2:hover .notiborderglow2 {
+  opacity: 0.1;
+}
+
+.note {
+  color: var(--color);
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 0.9rem;
+  width: 75%;
 }
 
 /*------------------*/
 /*Boton 3*/
 
-.contenedor-boton {
+.contenedor-boton3 {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: left;
   margin-top: 50px;
+  margin-left: 100px;
 }
 
 .imagen3 {
   width: 500px;
   height: 300px;
   margin-top: 10px;
-  border: 3px solid #ac7c3a; /* Añade un borde blanco de 3 píxeles */
+  border: 3px solid #5e5e5e; /* Añade un borde blanco de 3 píxeles */
   border-radius: 25px;
+  margin-right: 70px;
+  flex-basis: 100px;
+  flex-grow: 1;
+}
+
+/*TARJETA ACCESORIOS*/
+
+.tarjeta3 {
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  position: relative;
+  width: 30rem;
+  height: 15rem;
+  background: #29292c;
+  border-radius: 1rem;
+  overflow: hidden;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 16px;
+  --gradient: linear-gradient(to bottom, #e6a347, #a37433, #5a3b1c);
+  --color: #aa7831;
+  margin-top: 30px;
+  margin-right: 10px;
+  
+}
+
+.tarjeta3:before {
+  position: absolute;
+  content: "";
+  inset: 0.0625rem;
+  border-radius: 0.9375rem;
+  background: #18181b;
+  z-index: 2;
+}
+
+.tarjeta3:after {
+  position: absolute;
+  content: "";
+  width: 0.25rem;
+  inset: 0.65rem auto 0.65rem 0.5rem;
+  border-radius: 0.125rem;
+  background: var(--gradient);
+  transition: transform 300ms ease;
+  z-index: 4;
+}
+
+.tarjeta3:hover:after {
+  transform: translateX(0.15rem);
+}
+
+.notititle3 {
+  color: var(--color);
+  padding: 0.65rem 0.25rem 0.4rem 1.25rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: transform 300ms ease;
+  z-index: 5;
+}
+
+.tarjeta3:hover .notititle3 {
+  transform: translateX(0.15rem);
+}
+
+.notibody3 {
+  color: #99999d;
+  padding: 0 1.25rem;
+  transition: transform 300ms ease;
+  z-index: 5;
+}
+
+.tarjeta3:hover .notibody3 {
+  transform: translateX(0.25rem);
+}
+
+.notiglow3,
+.notiborderglow3 {
+  position: absolute;
+  width: 20rem;
+  height: 20rem;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle closest-side at center,
+    white,
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.notiglow3 {
+  z-index: 3;
+}
+
+.notiborderglow3 {
+  z-index: 1;
+}
+
+.tarjeta3:hover .notiglow3 {
+  opacity: 0.1;
+}
+
+.tarjeta3:hover .notiborderglow3 {
+  opacity: 0.1;
+}
+
+.note {
+  color: var(--color);
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 0.9rem;
+  width: 75%;
 }
 
 /*------------------*/
@@ -139,46 +600,128 @@ li:hover span {
   margin-top: 50px;
 }
 
-/* Media Query para dispositivos móviles */
-@media only screen and (max-width: 700px) {
-  .contenedor-logo {
-    margin-left: 0;
-    /*margin-top: 75px; /* Elimina completamente el margen superior del contenedor del logo */
+/*------------------*/
+/*------------------------------------------------------------------------------*/
+.footer {
+  background-color: #18181b;
+  padding: 1em 0;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  
+}
+/*------------------------------------PANTALLAS MEDIANAS------------------------------------------*/
+@media (max-width: 1440px) {
+
+  .footer {
+      padding: 5px;
   }
 
-  .Logo {
+  .slide-inner {
+    height: calc( 300px + 3em);
+  }
+
+  .texto,texto2,texto3 h2 {
+    font-size: px;
+    margin-bottom: 15px; /* Reducido para ajustar mejor */
+    font-size: 5rem;
+  }
+  
+  .texto,texto2,texto3 p {
+    margin: 0; /* Elimina el margen predeterminado del párrafo */
+    font-size: 2rem;
+  }
+}
+
+/*------------------------------------PANTALLAS CELULARES------------------------------------------*/
+
+
+@media (max-width: 430px) {
+    .main {
+      padding: 10px;
+  }
+
+  .footer {
+      padding: 5px;
+  }
+
+  .header img {
     max-width: 100%;
-    max-height: 150px;
-    margin-bottom: 20px;
-    margin-left: 0;
+    height: auto;
   }
 
-  .contenedor-botones,
-  .contenedor-boton {
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    justify-content: center;
+  .slide-inner {
+    height: calc( 170px + 3em);
   }
 
-  .imagen1,
-  .imagen2,
-  .imagen3 {
+  .texto,texto2,texto3 h2 {
+    font-size: 45px;
+    margin-bottom: 15px; /* Reducido para ajustar mejor */
+    font-size: 3rem;
+  }
+  
+  .texto,texto2,texto3 p {
+    margin: 0; /* Elimina el margen predeterminado del párrafo */
+    font-size: 0.8rem;
+  }
+
+  .imagen1, .imagen3 {
+    width: 100%;
+    height:auto;
+    
+  }
+
+  .imagen2 {
     width: 100%;
     height: auto;
-    margin: 0;
+    order: 1;
+    margin-left: 0px;
   }
 
-  .btn-login {
-    position: fixed;
-    bottom: 2%;
-    left: 2%;
+  .tarjeta2 {
+    order: 2;
   }
 
-  li {
-    font-size: 4vw;
-    width: 90%;
-    height: 4vh;
-    margin-top: 3vw;
+  .contenedor-boton1, .contenedor-boton3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: 0px;
   }
+
+  .contenedor-boton2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    margin-top: 50px;
+    margin-right: 0px;
+  }
+  
+}
+
+/*------------------------------------PANTALLAS CELULARES MAS CHICOS------------------------------------------*/
+
+
+@media (max-width: 375px) {
+    .main {
+      padding: 10px;
+  }
+
+  .footer {
+      padding: 6px;
+  }
+
+  .header img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .slide-inner {
+    height: calc( 150px + 3em);
+  }
+
 }

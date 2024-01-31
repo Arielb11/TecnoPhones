@@ -1,41 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="contenedor-logo">
-      <ul class="btn-login">
-        <li>
-          <a href="login"><span>Login</span></a>
-        </li>
-      </ul>
-      <img src="../assets/img/Logo.png" class="Logo" alt="Logo de la tienda" />
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="home.component.css" />
+  <title>TecnoPhones</title>
+</head>
+<body>
+  <section class="layout">
+    <div class="header">
+      <img src="assets/img/Logo.png" alt="LOGO">
     </div>
-    <div class="contenedor-botones">
-      <a href="/phone-nuevos" target="_blank">
-        <img src="assets/img/nuevos.png" alt="Botón 1" class="imagen1" />
-      </a>
-      <a href="https://www.apple.com/la/iphone/" target="_blank">
-        <img src="assets/img/usados.png" alt="Botón 2" class="imagen2" />
-      </a>
+    <!--------------------------------------------------------------------------------->
+    <div class="main">
+      <div class="slide">
+        <div class="slide-inner">
+            <input class="slide-open" type="radio" id="slide-1" 
+                  name="slide" aria-hidden="true" hidden="" checked="checked">
+            <div class="slide-item">
+                <img src="assets/img/cambios.jpg">
+                <div class="texto">
+                  <h2>PLAN CANJE</h2>
+                  <p>Tomamos tu Iphone usado!</p>
+                </div>
+            </div>
+            <input class="slide-open" type="radio" id="slide-2" 
+                  name="slide" aria-hidden="true" hidden="">
+            <div class="slide-item">
+                <img src="assets/img/envios3.jpg">
+                <div class="texto2">
+                  <h2>ENVIOS A TODO EL PAIS</h2>
+                  <p>Realizamos envios a todo el pais</p>
+                </div>
+            </div>
+            <input class="slide-open" type="radio" id="slide-3" 
+                  name="slide" aria-hidden="true" hidden="">
+            <div class="slide-item">
+                <img src="assets/img/pagos2.jpg">
+                <div class="texto3">
+                  <h2>METODOS DE PAGO</h2>
+                  <p>Aceptamos variedad de metodos de pagos!</p>
+                </div>
+            </div>
+            <label for="slide-3" class="slide-control prev control-1">‹</label>
+            <label for="slide-2" class="slide-control next control-1">›</label>
+            <label for="slide-1" class="slide-control prev control-2">‹</label>
+            <label for="slide-3" class="slide-control next control-2">›</label>
+            <label for="slide-2" class="slide-control prev control-3">‹</label>
+            <label for="slide-1" class="slide-control next control-3">›</label>
+            <ol class="slide-indicador">
+                <li>
+                    <label for="slide-1" class="slide-circulo">•</label>
+                </li>
+                <li>
+                    <label for="slide-2" class="slide-circulo">•</label>
+                </li>
+                <li>
+                    <label for="slide-3" class="slide-circulo">•</label>
+                </li>
+            </ol>
+        </div>
+      </div>
+      <div class="contenedor-boton1">
+        <a href=".../phone-nuevos" target="_blank">
+          <img src="assets/img/nuevos2.png" alt="Botón 1" class="imagen1" />
+        </a>
+        <div class="tarjeta1">
+          <div class="notiglow"></div>
+          <div class="notiborderglow"></div>
+          <div class="notititle">EQUIPOS NUEVOS</div>
+          <div class="notibody">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi labore
+            rerum inventore autem doloribus pariatur necessitatibus excepturi,
+            corporis ut maiores recusandae voluptatum reprehenderit non
+            consequatur dolores minima amet officiis eos.
+          </div>
+        </div>
+      </div>
+<!--------------------------------------------------------------------------------->
+      <div class="contenedor-boton2">
+        <div class="tarjeta2">
+          <div class="notiglow2"></div>
+          <div class="notiborderglow2"></div>
+          <div class="notititle2">EQUIPOS USADOS</div>
+          <div class="notibody2">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi labore
+            rerum inventore autem doloribus pariatur necessitatibus excepturi,
+            corporis ut maiores recusandae voluptatum reprehenderit non
+            consequatur dolores minima amet officiis eos.
+          </div>
+        </div>
+        <a href="https://www.apple.com/la/iphone/" target="_blank">
+          <img src="assets/img/usados2.png" alt="Botón 2" class="imagen2" />
+        </a>
+      </div>
+<!--------------------------------------------------------------------------------->
+      <div class="contenedor-boton3">
+        <a href="https://www.ejemplo.com/" target="_blank">
+          <img src="assets/img/accesorios2.png" alt="Botón 3" class="imagen3" />
+        </a>
+        <div class="tarjeta3">
+          <div class="notiglow3"></div>
+          <div class="notiborderglow3"></div>
+          <div class="notititle3">ACCESORIOS</div>
+          <div class="notibody3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi labore
+            rerum inventore autem doloribus pariatur necessitatibus excepturi,
+            corporis ut maiores recusandae voluptatum reprehenderit non
+            consequatur dolores minima amet officiis eos.
+          </div>
+        </div>
+      </div>
+      <!-- Sección Sobre Nosotros -->
+      <div class="sobre-nosotros">
+        <h2>Sobre Nosotros</h2>
+        <p>
+          ¡Bienvenido a nuestra tienda! Somos un equipo apasionado que se dedica a
+          ofrecer los mejores productos y servicios. Nuestra misión es satisfacer
+          las necesidades de nuestros clientes y brindar una experiencia de compra
+          excepcional.
+        </p>
+      </div>
     </div>
-    <div class="contenedor-boton">
-      <a href="https://www.ejemplo.com/" target="_blank">
-        <img src="assets/img/accesorios.png" alt="Botón 3" class="imagen3" />
-      </a>
+<!--------------------------------------------------------------------------------->
+    <div class="footer">
+      <p>Pie de página</p>
     </div>
-    <!-- Sección Sobre Nosotros -->
-    <div class="sobre-nosotros">
-      <h2>Sobre Nosotros</h2>
-      <p>
-        ¡Bienvenido a nuestra tienda! Somos un equipo apasionado que se dedica a
-        ofrecer los mejores productos y servicios. Nuestra misión es satisfacer
-        las necesidades de nuestros clientes y brindar una experiencia de compra
-        excepcional.
-      </p>
-    </div>
-  </body>
+  </section>
+</body>
 </html>
