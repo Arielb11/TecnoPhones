@@ -3,16 +3,16 @@ POST http://localhost:3000/api/users/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "cuquito",
-    "password": "quique"   
+    "username": "prueba",
+    "password": "prueba"   
 }
 ###
 POST http://localhost:3000/api/users/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "cucu",
-    "password": "123456789"   
+    "username": "prueba",
+    "password": "prueba"   
 }
 
 ###

@@ -2,7 +2,6 @@ const express = require("express");
 const phoneService = require("../models/phone/phoneService");
 const router = express.Router();
 const {subirImagen} = require('../middleware/storage');
-//import { subirImagen } from "../middleware/storage";
 
 router.post('/', subirImagen.single('imagePath'), phoneService.create)
 router.get('/', phoneService.get)
