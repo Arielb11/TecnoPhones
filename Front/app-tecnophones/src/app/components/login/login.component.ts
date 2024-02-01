@@ -21,20 +21,19 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
   userForm: FormGroup;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private _userService: UserService
-  ) {
-    this.userForm = this.formBuilder.group({
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private _userService: UserService) {
+      this.userForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
+
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
       username: '',
-      password: ',',
+      password: '',
     });
   }
 
@@ -49,6 +48,7 @@ export class LoginComponent implements OnInit {
           title: 'Has podido ingresar!',
           icon: 'success',
         });
+        localStorage.setItem('token', data.token); //Guarda el token en el navegador web
         this.router.navigate(['/phone']);
       },
       (error) => {

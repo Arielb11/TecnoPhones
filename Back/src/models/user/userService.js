@@ -55,7 +55,7 @@ module.exports = {
 
          res.cookie("jwt", token, {
             httpOnly: true,
-            maxAge:24*60*60*1000 //Por un dia
+            maxAge:30 * 60 * 1000 //El token dura una hora
          })
 
          res.json({
