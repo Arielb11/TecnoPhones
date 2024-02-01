@@ -11,7 +11,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   position: relative;
-  padding-bottom: 3em;
+  
 }
 
 h1, h2, h3, h4 {
@@ -32,6 +32,8 @@ p {
   max-width: 100%;
   height: 120px;
 }
+
+
 /*------------------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------------------*/
@@ -600,22 +602,105 @@ p {
   margin-top: 50px;
 }
 
+.container-footer {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  
+}
+
+.footer {
+  background-color: #29292c;
+  padding: 0.1em 0;
+  text-align: center;
+  position: relative;
+  
+}
+
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.footer-links {
+  width: 100%;
+  padding: 0 15px;
+  
+  
+}
+
+.footer-links h4 {
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 25px;
+  font-weight: 500;
+  border-bottom: 2px solid #aa7831;
+  padding-bottom: 10px;
+  display: inline-block;
+  margin-top: 30px;
+  
+}
+
+.social-link {
+  display: flex;
+  justify-content: center;
+}
+
+.social-link a {
+  display: inline-block;
+  min-height: 40px;
+  width: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all .5s ease;
+} 
+
+.social-link a:hover {
+  background-color: #aa7831;
+}
+
+.apple-logo {
+  flex: 1; /* Hace que ocupe el espacio disponible (parte izquierda) */
+  text-align: left;
+}
+
+.apple-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 24px;
+  color: #aaa; /* Color del icono (puedes ajustarlo) */
+}
+
+.apple-button:hover {
+  color: #000; /* Cambia el color al pasar el mouse (puedes ajustarlo) */
+}
+
 /*------------------*/
-/*------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------
 .footer {
   background-color: #18181b;
   padding: 1em 0;
   text-align: center;
   position: absolute;
-  bottom: 0;
+  bottom: 4;
   width: 100%;
   
 }
+*/
 /*------------------------------------PANTALLAS MEDIANAS------------------------------------------*/
 @media (max-width: 1440px) {
 
   .footer {
-      padding: 5px;
+      padding: 0;
+      
   }
 
   .slide-inner {
@@ -632,6 +717,16 @@ p {
     margin: 0; /* Elimina el margen predeterminado del párrafo */
     font-size: 2rem;
   }
+
+  .footer-row {
+    text-align: center;
+  }
+
+  .footer-links {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
 }
 
 /*------------------------------------PANTALLAS CELULARES------------------------------------------*/
@@ -643,7 +738,8 @@ p {
   }
 
   .footer {
-      padding: 5px;
+      padding: 0.1em 0;
+
   }
 
   .header img {
@@ -701,6 +797,16 @@ p {
     margin-right: 0px;
   }
   
+  .footer-row {
+    text-align: center;
+  }
+
+  .footer-links {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+
 }
 
 /*------------------------------------PANTALLAS CELULARES MAS CHICOS------------------------------------------*/
@@ -712,7 +818,8 @@ p {
   }
 
   .footer {
-      padding: 6px;
+    padding: 0.1em 0;
+
   }
 
   .header img {
