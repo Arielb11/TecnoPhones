@@ -81,17 +81,6 @@ p {
   
 }
 
-.texto,texto2,texto3 h2 {
-  font-size: 45px;
-  margin-bottom: 15px; /* Reducido para ajustar mejor */
-  font-size: 5rem;
-}
-
-.texto,texto2,texto3 p {
-  margin: 0; /* Elimina el margen predeterminado del párrafo */
-  font-size: 2rem;
-}
-
 .slide-inner {
   position: relative;
   overflow: hidden;
