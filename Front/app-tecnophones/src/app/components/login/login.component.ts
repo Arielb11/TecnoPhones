@@ -1,11 +1,6 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
@@ -23,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
-              private _userService: UserService) {
+              private _userService: UserService,
+              @Inject(PLATFORM_ID) private platformId: Object) {
       this.userForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -31,6 +27,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId) && localStorage.getItem('token')){
+      this.router.navigate(['/phone']);
+    }
     this.userForm = this.formBuilder.group({
       username: '',
       password: '',
