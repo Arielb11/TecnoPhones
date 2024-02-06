@@ -1,0 +1,34 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">LISTADO DE ACCESORIOS</span>
+                    <button class="btn btn-success float-end" routerLink="/agregar-accesorio">NUEVO</button>
+                    <table *ngIf="listAccesorios.length > 0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let accesorio of listAccesorios">
+                            <td>{{ accesorio.nombre }}</td>
+                            <td>{{ accesorio.precio }}</td>
+                            <td>{{ accesorio.imagePath }}</td>
+                            <td>
+                                <i [routerLink]="['/editar-accesorios', accesorio._id]" class="fas fa-solid fa-pen-to-square text-primary"></i>
+                                <i (click)="eliminarAccesorio(accesorio._id)" class="fas fa-solid fa-trash text-danger"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h5 style="text-align: start; margin-top: 10px;" *ngIf="listAccesorios.length == 0">No hay accesorios para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

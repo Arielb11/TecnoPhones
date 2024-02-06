@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <span class="titulo">{{ titulo | uppercase}}</span>
+                    <form class="mt-3" [formGroup]="accesorioForm" (ngSubmit)="agregarAccesorio()">
+                        <div class="mb-3">
+                            <input type="text" formControlName="nombre" class="form-control form-control-lg" placeholder="Nombre">
+                            <div class="text-danger" *ngIf="accesorioForm.get('nombre')?.hasError('required') && accesorioForm.get('nombre')?.touched">
+                                <span>El nombre <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="precio" class="form-control form-control-lg" placeholder="Precio">
+                            <div class="text-danger" *ngIf="accesorioForm.get('estado')?.hasError('required') && accesorioForm.get('precio')?.touched">
+                                <span>El precio <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="file"  class="d-none" (change)="onPhotoSelected($any($event))" #photoInput>
+                            <img [src]="photoSelected || 'assets/img/no-image.png'" class="img-fluid" alt="" (click)="photoInput.click()">
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-secondary btn-lg float-start" routerLink="/accesorio">VOLVER</button>
+                            <button class="btn btn-success btn-lg float-end" type="submit" [disabled]="accesorioForm.invalid">ACEPTAR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

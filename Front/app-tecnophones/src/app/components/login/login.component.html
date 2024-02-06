@@ -1,3 +1,6 @@
+<div class="header">
+    <img src="assets/img/Logo.png" alt="LOGO">
+</div>
 <div class="login-container">
     <form [formGroup]="userForm" (submit)="submit()" class="login-form">
         <h1>Login</h1>
@@ -5,12 +8,20 @@
             <label for="username">Username</label>
             <input formControlName="username" type="text" class="form-control">
         </div>
-
         <div class="form-group">
             <label for="password">Password</label>
             <input formControlName="password" type="password" class="form-control">
         </div>
-
-        <button type="submit">Login</button>
+        <div class="div-btn">
+            <button type="submit">Login</button>
+        </div>
     </form>
 </div>
+ 
+
+
+
+
+
+
+
