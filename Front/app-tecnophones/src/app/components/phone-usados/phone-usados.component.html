@@ -1,1 +1,31 @@
-<p>phone-usados works!</p>
+    <div class="header">
+        <img src="assets/img/Logo.png" alt="LOGO">
+    </div>
+
+<div class="row">
+  
+    <div class="col">
+        <div class="row" id="ads">
+        <!-- Category Card -->
+        <div class="col-sm-3  " *ngFor="let celular of listaCelulares">
+            <div class="card rounded" id="tarjeta">
+                <div class="card-image">
+                    
+                    <span class="card-notify-year">2018</span>
+                    <img [src]="'http://localhost:3000/' + celular.imagePath" alt="" class="img-card-top w-100">
+                </div>
+                <div class="card-image-overlay m-auto">
+                    
+                    <span class="card-detail-badge">%{{celular.bateria}}</span>
+                    <span class="card-detail-badge">{{celular.capacidad}}GB</span>
+                </div>
+                <div class="card-body text-center">
+                    <div class="ad-title m-auto">
+                        <h5>{{celular.modelo}}</h5>
+                    </div>
+                    <h3>{{celular.valor| currency:'USD' }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
