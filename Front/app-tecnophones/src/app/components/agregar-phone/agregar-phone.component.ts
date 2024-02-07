@@ -24,6 +24,7 @@ export class AgregarPhoneComponent implements OnInit{
   id: string | null;
   file!: File;
   photoSelected!: string | ArrayBuffer | null; //Archivo para mostrar la imagen subida
+  mostrarSelect: boolean = true;
 
   constructor (private fb: FormBuilder, private router: Router, private _phoneService: PhoneService, private aRouter: ActivatedRoute) {
     this.phoneForm = this.fb.group({
@@ -76,6 +77,7 @@ export class AgregarPhoneComponent implements OnInit{
   esEditar() {
     if (this.id !== null) {
       this.titulo = 'Editar';
+      this.mostrarSelect = false;
       this._phoneService.obtenerPhone(this.id).subscribe(data => {
         this.phoneForm.setValue({
           modelo: data.modelo,
@@ -99,7 +101,7 @@ export class AgregarPhoneComponent implements OnInit{
       //Esto es para mostrar en pantalla la foto subida
       const reader = new FileReader();
       reader.onload = e => {
-        this.photoSelected = reader.result;
+        this.photoSelected = 'assets/img/icon-imagen.png';
       }
       reader.readAsDataURL(this.file);
     }
