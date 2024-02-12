@@ -9,8 +9,12 @@ const accesorioSchema = mongoose.Schema ({
         type: Number,
         required: true
     },
-    imagePath: {
+    imagenPrincipal: {
         type: String,
+        required: true
+    },
+    imagePaths: {
+        type: [String],
         required: true
     }
 }, {versionKey:false})

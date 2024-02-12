@@ -22,7 +22,7 @@ export class PhoneService {
   }
 
   guardarPhone(modelo:string, estado:string, bateria:number, 
-    capacidad:number, observaciones:string, valor:number, imagePath:File): Observable<any> {
+    capacidad:number, observaciones:string, valor:number,visible:boolean, imagenPrincipal: File, imagePaths:File[]): Observable<any> {
     const url = this.baseURL + "phones";
     const fd = new FormData();
     fd.append('modelo', modelo);
@@ -31,7 +31,11 @@ export class PhoneService {
     fd.append('capacidad', capacidad.toString());
     fd.append('observaciones', observaciones);
     fd.append('valor', valor.toString());
-    fd.append('imagePath', imagePath);
+    fd.append('visible', visible.toString());
+    fd.append('imagenPrincipal', imagenPrincipal);
+    imagePaths.forEach((imagen, index) => {
+      fd.append(`imagePaths`, imagen, imagen.name);
+    });
     return this.http.post(url, fd);
   }
 
@@ -41,7 +45,7 @@ export class PhoneService {
   }
 
   editarPhone(id: string, modelo:string, estado:string, bateria:number, 
-    capacidad:number, observaciones:string, valor:number, imagePath:File): Observable<any> {
+    capacidad:number, observaciones:string, valor:number,visible:boolean, imagenPrincipal: File, imagePaths:File[]): Observable<any> {
     const url = this.baseURL + "phones/";
     const fd = new FormData();
     fd.append('modelo', modelo);
@@ -50,7 +54,11 @@ export class PhoneService {
     fd.append('capacidad', capacidad.toString());
     fd.append('observaciones', observaciones);
     fd.append('valor', valor.toString());
-    fd.append('imagePath', imagePath);
+    fd.append('visible', visible.toString());
+    fd.append('imagenPrincipal', imagenPrincipal);
+    imagePaths.forEach((imagen, index) => {
+      fd.append(`imagePaths`, imagen, imagen.name);
+    });
     return this.http.put(url + id, fd);
   }
 }

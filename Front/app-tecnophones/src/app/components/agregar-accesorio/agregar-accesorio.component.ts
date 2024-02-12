@@ -19,14 +19,16 @@ interface HtmlInputEvent extends Event {
 export class AgregarAccesorioComponent implements OnInit{
   accesorioForm: FormGroup;
   id: string | null;
-  file!: File;
+  imagePaths: File [] = [];
+  imagenPrincipal!: File;
   titulo = 'Agregar';
-  photoSelected!: string | ArrayBuffer | null;
+  photoSelect!: (string | ArrayBuffer | null);
+  photosSelected: (string | ArrayBuffer | null)[] = [];
 
   constructor (private fb: FormBuilder, private router: Router, private _accesorioService: AccesorioService, private aRouter: ActivatedRoute) {
     this.accesorioForm = this.fb.group({
       nombre: ['', Validators.required],
-      precio: ['', Validators.required]
+      precio: ['', Validators.required],
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
   }
@@ -37,7 +39,8 @@ export class AgregarAccesorioComponent implements OnInit{
 
   agregarAccesorio(){
     if (this.id !== null){
-      this._accesorioService.editarAccesorio(this.id, this.accesorioForm.get('nombre')?.value, this.accesorioForm.get('precio')?.value, this.file)
+      console.log(this.imagenPrincipal);
+      this._accesorioService.editarAccesorio(this.id, this.accesorioForm.get('nombre')?.value, this.accesorioForm.get('precio')?.value, this.imagenPrincipal, this.imagePaths)
         .subscribe(data => {
           Swal.fire({
             title: "Accesorio editado correctamente",
@@ -49,7 +52,7 @@ export class AgregarAccesorioComponent implements OnInit{
         this.accesorioForm.reset();
       })
     } else {
-      this._accesorioService.guardarAccesorio(this.accesorioForm.get('nombre')?.value, this.accesorioForm.get('precio')?.value, this.file)
+      this._accesorioService.guardarAccesorio(this.accesorioForm.get('nombre')?.value, this.accesorioForm.get('precio')?.value,this.imagenPrincipal,  this.imagePaths)
       .subscribe(data => {
         Swal.fire({
           title: "Accesorio agregado correctamente",
@@ -69,29 +72,48 @@ export class AgregarAccesorioComponent implements OnInit{
       this._accesorioService.obtenerAccesorio(this.id).subscribe(data => {
         this.accesorioForm.setValue({
           nombre: data.nombre,
-          precio: data.precio,
-          imagePath: this.file,
-        })
-      })
+          precio: data.precio
+        });
+        console.log(data.imagenPrincipal);
+        // Asumiendo que `data.imagePaths` es un arreglo de rutas de imágenes
+        this.photosSelected = data.imagePaths.map((path: string) => `http://localhost:3000/${path}`);
+        if(data.imagenPrincipal) {
+          this.photoSelect = `http://localhost:3000/${data.imagenPrincipal}`;
+        }
+      });
     }
   }
+  
 
-  onPhotoSelected(event: Event): void {
-    // Realiza una aserción de tipo para tratar event.target como HTMLInputElement
+  onMainPhotoSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
+    
+    if (input.files && input.files[0]) {
+      this.imagenPrincipal = input.files[0]; // Asigna la primera imagen seleccionada como imagenPrincipal
   
-    // Ahora verifica si input y files existen
-    if (input && input.files && input.files[0]) {
-      this.file = input.files[0]; // Sube el primer archivo que exista
-  
-      // Esto es para mostrar en pantalla la foto subida
       const reader = new FileReader();
-      reader.onload = e => {
-        this.photoSelected = reader.result;
-      }
-      reader.readAsDataURL(this.file);
+      reader.onload = (e) => {
+        this.photoSelect = reader.result; // Actualiza la vista previa de la imagenPrincipal
+      };
+      reader.readAsDataURL(input.files[0]);
     }
   }
   
-
+  onPhotoSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    
+    if (input.files) {
+      this.imagePaths = Array.from(input.files);
+      this.photosSelected = [];
+      Array.from(input.files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          this.photosSelected.push(reader.result);
+        };
+        reader.readAsDataURL(file);
+      });
+      console.log(this.imagePaths);
+    }
+  }
+  
 }

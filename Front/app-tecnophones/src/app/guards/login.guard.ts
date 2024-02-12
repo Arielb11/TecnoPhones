@@ -1,19 +1,26 @@
-import { Inject } from "@angular/core";
-import { Router } from "@angular/router";
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
 
-export const loginGuard = () => {
+@Injectable({
+  providedIn: 'root',
+})
+export class LoginGuard implements CanActivate {
+  constructor(private router: Router) {}
 
-    //const router = Inject(Router);
-
+  canActivate(): boolean {
     if (typeof localStorage !== 'undefined') {
-        if (localStorage.getItem('token')){
-            return true;
-        } else {
-            return false;
-        }
+      if (localStorage.getItem('token')) {
+        // El usuario tiene un token, permitir la navegación
+        return true;
       } else {
-        //router.navigate(['/login']);
+        // No hay token, redirigir al usuario a la página de login
+        this.router.navigate(['/login']); // Asegúrate de cambiar '/login' por la ruta correcta
         return false;
       }
-    
+    } else {
+      // LocalStorage no está disponible, redirigir al usuario
+      this.router.navigate(['/login']); // Asegúrate de cambiar '/login' por la ruta correcta
+      return false;
+    }
+  }
 }

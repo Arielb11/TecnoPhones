@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <span class="titulo">LISTADO DE ACCESORIOS</span>
-                    <button class="btn btn-success float-end" routerLink="/agregar-accesorio">NUEVO</button>
+                    <button class="btn btn-success float-end" routerLink="/agregar-accesorios">NUEVO</button>
                     <table *ngIf="listAccesorios.length > 0" class="table table-striped mt-3">
                         <thead>
                           <tr>
@@ -18,7 +18,6 @@
                           <tr *ngFor="let accesorio of listAccesorios">
                             <td>{{ accesorio.nombre }}</td>
                             <td>{{ accesorio.precio }}</td>
-                            <td>{{ accesorio.imagePath }}</td>
                             <td>
                                 <i [routerLink]="['/editar-accesorios', accesorio._id]" class="fas fa-solid fa-pen-to-square text-primary"></i>
                                 <i (click)="eliminarAccesorio(accesorio._id)" class="fas fa-solid fa-trash text-danger"></i>

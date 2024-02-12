@@ -1,3 +1,20 @@
 .titulo {
     font-size: 1.8rem;
 }
+.custom-select {
+    background-color: #f8f9fa;
+    color: #495057;
+    padding: .375rem 1.75rem .375rem .75rem;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    -webkit-appearance: none; /* Elimina la apariencia nativa para navegadores WebKit/Blink */
+    -moz-appearance: none; /* Elimina la apariencia nativa para Firefox */
+    appearance: none; /* Elimina la apariencia nativa para el estándar */
+    margin-top: 5px;
+  }
+  
+  .custom-select:focus {
+    border-color: #80bdff;
+    outline: 0;
+  }
+  

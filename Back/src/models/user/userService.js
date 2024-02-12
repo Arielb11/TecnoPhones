@@ -52,12 +52,12 @@ module.exports = {
          }
 
          const token = jwt.sign({_id:user._id}, "secret key")
-
          res.cookie("jwt", token, {
-            httpOnly: true,
-            maxAge:30 * 60 * 1000 //El token dura una hora
+            httpOnly: true, // Para prevenir acceso mediante JS
+            secure: true, // Solo se envía en HTTPS
+            sameSite: 'strict', // Restricción de envío con solicitudes entre sitios
+            maxAge: 30 * 60 * 1000, // Ejemplo de tiempo de vida de 30 minutos
          })
-
          res.json({
             message: "Success",
             token: createToken(user)
@@ -70,3 +70,4 @@ function createToken(user){
         }
         return jwt.sign(payload, 'adrian');
 }
+

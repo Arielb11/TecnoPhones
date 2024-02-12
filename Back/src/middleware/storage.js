@@ -1,4 +1,5 @@
 const multer = require ("multer");
+const { v4: uuidv4 } = require('uuid');
 
 const guardar = multer.diskStorage({
     destination: (req,file,cb) => { //Ubicacion en donde se guardan las imagenes
@@ -6,8 +7,8 @@ const guardar = multer.diskStorage({
     },
     filename: (req,file,cb) =>{ //Nombre con el que se guardan las imagenes
         if(file !== null){ 
-            const ext = file.originalname.split('.').pop(); //Para evitar que haya repetidas
-            cb(null,Date.now()+'.'+ext);
+            const ext = file.originalname.split('.').pop(); // Extrae la extensión del archivo
+            cb(null, uuidv4() + '.' + ext); // Genera un nombre de archivo único
         }
     }
 })

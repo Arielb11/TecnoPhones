@@ -68,12 +68,12 @@
     <div class="col">
         <div class="row" id="ads">
         <!-- Category Card -->
-        <div class="col-sm-3  " *ngFor="let celular of listaCelulares">
+        <div class="col-sm-3 " *ngFor="let celular of listaCelulares">
             <div class="card rounded" id="tarjeta">
                 <div class="card-image">
                     
                     <span class="card-notify-year">2018</span>
-                    <img [src]="'http://localhost:3000/' + celular.imagePath" alt="" class="img-card-top w-100">
+                    
                 </div>
                 <div class="card-image-overlay m-auto">
                     
@@ -87,6 +87,7 @@
                     <h3>{{celular.valor| currency:'USD' }}</h3>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </div>

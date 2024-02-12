@@ -9,139 +9,146 @@
   <title>TecnoPhones</title>
 </head>
 <body>
-  <section class="layout">
-    <div class="header">
-      <img src="assets/img/Logo.png" alt="LOGO">
+  <div class="header">
+    <img src="assets/img/Logo.png" alt="LOGO">
+  </div>
+  <div class="slide">
+    <div class="slide-inner">
+        <input class="slide-open" type="radio" id="slide-1" 
+              name="slide" aria-hidden="true" hidden="" checked="checked">
+        <div class="slide-item">
+            <img src="assets/img/cambios.jpg">
+            <div class="texto1">
+              <h2>PLAN CANJE</h2>
+              <p>Tomamos tu Iphone usado!</p>
+            </div>
+        </div>
+        <input class="slide-open" type="radio" id="slide-2" 
+              name="slide" aria-hidden="true" hidden="">
+        <div class="slide-item">
+            <img src="assets/img/envios3.jpg">
+            <div class="texto2">
+              <h2>ENVIOS A TODO EL PAIS</h2>
+              <p>Realizamos envios a todo el pais</p>
+            </div>
+        </div>
+        <input class="slide-open" type="radio" id="slide-3" 
+              name="slide" aria-hidden="true" hidden="">
+        <div class="slide-item">
+            <img src="assets/img/pagos2.jpg">
+            <div class="texto3">
+              <h2>METODOS DE PAGO</h2>
+              <p>Aceptamos variedad de metodos de pagos!</p>
+            </div>
+        </div>
+        <label for="slide-3" class="slide-control prev control-1">‹</label>
+        <label for="slide-2" class="slide-control next control-1">›</label>
+        <label for="slide-1" class="slide-control prev control-2">‹</label>
+        <label for="slide-3" class="slide-control next control-2">›</label>
+        <label for="slide-2" class="slide-control prev control-3">‹</label>
+        <label for="slide-1" class="slide-control next control-3">›</label>
+        <ol class="slide-indicador">
+            <li>
+                <label for="slide-1" class="slide-circulo">•</label>
+            </li>
+            <li>
+                <label for="slide-2" class="slide-circulo">•</label>
+            </li>
+            <li>
+                <label for="slide-3" class="slide-circulo">•</label>
+            </li>
+        </ol>
     </div>
-    <!--------------------------------------------------------------------------------->
-    <div class="main">
-      <div class="slide">
-        <div class="slide-inner">
-            <input class="slide-open" type="radio" id="slide-1" 
-                  name="slide" aria-hidden="true" hidden="" checked="checked">
-            <div class="slide-item">
-                <img src="assets/img/cambios.jpg">
-                <div class="texto1">
-                  <h2>PLAN CANJE</h2>
-                  <p>Tomamos tu Iphone usado!</p>
+  </div>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <section class="layout">
+          
+          <!--------------------------------------------------------------------------------->
+          <div class="main">
+            <div class="contenedor-boton1">
+              <a href="/iPhoneNuevos">
+                <img src="assets/img/nuevos2.png" alt="Botón 1" class="imagen1" />
+              </a>
+              <div class="tarjeta1">
+                <div class="notiglow"></div>
+                <div class="notiborderglow"></div>
+                <div class="notititle">EQUIPOS NUEVOS</div>
+                <div class="notibody">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi labore
+                  rerum inventore autem doloribus pariatur necessitatibus excepturi,
+                  corporis ut maiores recusandae voluptatum reprehenderit non
+                  consequatur dolores minima amet officiis eos.
                 </div>
+              </div>
             </div>
-            <input class="slide-open" type="radio" id="slide-2" 
-                  name="slide" aria-hidden="true" hidden="">
-            <div class="slide-item">
-                <img src="assets/img/envios3.jpg">
-                <div class="texto2">
-                  <h2>ENVIOS A TODO EL PAIS</h2>
-                  <p>Realizamos envios a todo el pais</p>
+      <!--------------------------------------------------------------------------------->
+            <div class="contenedor-boton2">
+              <div class="tarjeta2">
+                <div class="notiglow2"></div>
+                <div class="notiborderglow2"></div>
+                <div class="notititle2">EQUIPOS USADOS</div>
+                <div class="notibody2">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi labore
+                  rerum inventore autem doloribus pariatur necessitatibus excepturi,
+                  corporis ut maiores recusandae voluptatum reprehenderit non
+                  consequatur dolores minima amet officiis eos.
                 </div>
+              </div>
+              <a href="/iPhoneUsados">
+                <img src="assets/img/usados2.png" alt="Botón 2" class="imagen2" />
+              </a>
             </div>
-            <input class="slide-open" type="radio" id="slide-3" 
-                  name="slide" aria-hidden="true" hidden="">
-            <div class="slide-item">
-                <img src="assets/img/pagos2.jpg">
-                <div class="texto3">
-                  <h2>METODOS DE PAGO</h2>
-                  <p>Aceptamos variedad de metodos de pagos!</p>
+      <!--------------------------------------------------------------------------------->
+            <div class="contenedor-boton3">
+              <a href="/list-accesorios" target="_blank">
+                <img src="assets/img/accesorios2.png" alt="Botón 3" class="imagen3" />
+              </a>
+              <div class="tarjeta3">
+                <div class="notiglow3"></div>
+                <div class="notiborderglow3"></div>
+                <div class="notititle3">ACCESORIOS</div>
+                <div class="notibody3">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi labore
+                  rerum inventore autem doloribus pariatur necessitatibus excepturi,
+                  corporis ut maiores recusandae voluptatum reprehenderit non
+                  consequatur dolores minima amet officiis eos.
                 </div>
+              </div>
             </div>
-            <label for="slide-3" class="slide-control prev control-1">‹</label>
-            <label for="slide-2" class="slide-control next control-1">›</label>
-            <label for="slide-1" class="slide-control prev control-2">‹</label>
-            <label for="slide-3" class="slide-control next control-2">›</label>
-            <label for="slide-2" class="slide-control prev control-3">‹</label>
-            <label for="slide-1" class="slide-control next control-3">›</label>
-            <ol class="slide-indicador">
-                <li>
-                    <label for="slide-1" class="slide-circulo">•</label>
-                </li>
-                <li>
-                    <label for="slide-2" class="slide-circulo">•</label>
-                </li>
-                <li>
-                    <label for="slide-3" class="slide-circulo">•</label>
-                </li>
-            </ol>
-        </div>
-      </div>
-      <div class="contenedor-boton1">
-        <a href="/iPhoneNuevos">
-          <img src="assets/img/nuevos2.png" alt="Botón 1" class="imagen1" />
-        </a>
-        <div class="tarjeta1">
-          <div class="notiglow"></div>
-          <div class="notiborderglow"></div>
-          <div class="notititle">EQUIPOS NUEVOS</div>
-          <div class="notibody">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi labore
-            rerum inventore autem doloribus pariatur necessitatibus excepturi,
-            corporis ut maiores recusandae voluptatum reprehenderit non
-            consequatur dolores minima amet officiis eos.
+            <!-- Sección Sobre Nosotros -->
+            <div class="sobre-nosotros">
+              <h2>Sobre Nosotros</h2>
+              <p>
+                ¡Bienvenido a nuestra tienda! Somos un equipo apasionado que se dedica a
+                ofrecer los mejores productos y servicios. Nuestra misión es satisfacer
+                las necesidades de nuestros clientes y brindar una experiencia de compra
+                excepcional.
+              </p>
+            </div>
           </div>
-        </div>
-      </div>
-<!--------------------------------------------------------------------------------->
-      <div class="contenedor-boton2">
-        <div class="tarjeta2">
-          <div class="notiglow2"></div>
-          <div class="notiborderglow2"></div>
-          <div class="notititle2">EQUIPOS USADOS</div>
-          <div class="notibody2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi labore
-            rerum inventore autem doloribus pariatur necessitatibus excepturi,
-            corporis ut maiores recusandae voluptatum reprehenderit non
-            consequatur dolores minima amet officiis eos.
-          </div>
-        </div>
-        <a href="/iPhoneUsados">
-          <img src="assets/img/usados2.png" alt="Botón 2" class="imagen2" />
-        </a>
-      </div>
-<!--------------------------------------------------------------------------------->
-      <div class="contenedor-boton3">
-        <a href="https://www.ejemplo.com/" target="_blank">
-          <img src="assets/img/accesorios2.png" alt="Botón 3" class="imagen3" />
-        </a>
-        <div class="tarjeta3">
-          <div class="notiglow3"></div>
-          <div class="notiborderglow3"></div>
-          <div class="notititle3">ACCESORIOS</div>
-          <div class="notibody3">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi labore
-            rerum inventore autem doloribus pariatur necessitatibus excepturi,
-            corporis ut maiores recusandae voluptatum reprehenderit non
-            consequatur dolores minima amet officiis eos.
-          </div>
-        </div>
-      </div>
-      <!-- Sección Sobre Nosotros -->
-      <div class="sobre-nosotros">
-        <h2>Sobre Nosotros</h2>
-        <p>
-          ¡Bienvenido a nuestra tienda! Somos un equipo apasionado que se dedica a
-          ofrecer los mejores productos y servicios. Nuestra misión es satisfacer
-          las necesidades de nuestros clientes y brindar una experiencia de compra
-          excepcional.
-        </p>
-      </div>
-    </div>
-<!--------------------------------------------------------------------------------->
-    <div class="footer">
-      <div class="container-footer">
-          <div class="footer-links">
-            <h4>Seguinos en nuestras redes!</h4>
-            <div class="social-link">
-              <a href="https://www.facebook.com/groups/376112225823520/user/100000130290897/"><i class="fab fa-facebook-f"></i></a>
-              <a href="https://www.instagram.com/iphonemacia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
-              <a href="https://www.tiktok.com/@iphone.macia?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="apple-logo">
-        <a href="/login" class="apple-button">
-          <i class="fab fa-apple"></i>
-        </a>
+      </section>
       </div>
     </div>
-  </section>
+  </div>
+  <!--------------------------------------------------------------------------------->
+  <div class="footer">
+    <div class="container-footer">
+        <div class="footer-links">
+          <h4>Seguinos en nuestras redes!</h4>
+          <div class="social-link">
+            <a href="https://www.facebook.com/groups/376112225823520/user/100000130290897/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/iphonemacia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@iphone.macia?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="apple-logo">
+      <a href="/login" class="apple-button">
+        <i class="fab fa-apple"></i>
+      </a>
+    </div>
+  </div>
 </body>
 </html>

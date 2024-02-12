@@ -48,6 +48,11 @@ export class LoginComponent implements OnInit {
           icon: 'success',
         });
         localStorage.setItem('token', data.token); //Guarda el token en el navegador web
+        // el setTimeout es para que caduzca la seccion, se remueve el token despues de 10 min
+        setTimeout(() => {
+          localStorage.removeItem('token');
+          console.log('Token eliminado del localStorage.');
+        }, 600000);
         this.router.navigate(['/phone']);
       },
       (error) => {
