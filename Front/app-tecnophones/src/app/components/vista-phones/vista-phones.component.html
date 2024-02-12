@@ -4,13 +4,17 @@
             <div class="card-header">
                 {{phone.modelo}}
             </div>
-            <img [src]="'http://localhost:3000' + phone.imagePath" alt="" class="img-card-top w-100">
+
             <div class="card-body">
+                <img [src]="'http://localhost:3000' + phone.imagenPrincipal" alt="" class="img-card-top w-100">
                 <p>Estado:{{phone.estado}}</p>
                 <p>{{phone.bateria}}</p>
                 <p>{{phone.capacidad}}</p>
                 <p>{{phone.observaciones}}</p>
                 <p>{{phone.valor}}</p>
+                <div *ngFor="let imagePath of phone.imagePaths">
+                    <img [src]="'http://localhost:3000' + imagePath" alt="" class="img-card-top w-100">
+                </div>
             </div>
         </div>
     </div>

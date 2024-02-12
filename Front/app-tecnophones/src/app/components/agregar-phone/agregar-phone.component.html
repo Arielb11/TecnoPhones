@@ -13,9 +13,9 @@
                                 <span>El modelo <strong>es obligatorio</strong></span>
                             </div>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" *ngIf="mostrarSelect">
                             <label>Estado</label>
-                            <select class="form-select custom-select" *ngIf="mostrarSelect" formControlName="estado">
+                            <select class="form-select custom-select" formControlName="estado">
                                 <option value="Nuevo">Nuevo</option>
                                 <option value="Usado">Usado</option>
                             </select>
@@ -36,8 +36,26 @@
                             <input type="number" formControlName="valor" class="form-control form-control-lg" placeholder="Valor">
                         </div>
                         <div class="mb-3">
-                            <input type="file"  class="d-none" (change)="onPhotoSelected($any($event))" #photoInput>
-                            <img [src]="photoSelected || 'assets/img/no-image.png'" class="img-fluid" alt="" (click)="photoInput.click()">
+                            <label>Visible</label>
+                            <select class="form-select custom-select" formControlName="visible">
+                                <option value="true">Verdadero</option>
+                                <option value="false">Falso</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <!-- Input para la imagen principal -->
+                            <input type="file" class="d-none" (change)="onMainPhotoSelected($event)" #mainPhotoInput>
+                            <img [src]="photoSelect || 'assets/img/no-image.png'" class="img-fluid mb-2" alt="Imagen Principal" (click)="mainPhotoInput.click()" width="100" height="100">
+                            <button type="button" class="btn btn-primary btn-sm" (click)="mainPhotoInput.click()">Seleccionar Imagen Principal</button>
+
+                            <!-- Sección existente para imágenes secundarias, sin cambios -->
+                            <input type="file" name="imagePaths" multiple class="d-none" (change)="onPhotoSelected($event)" #photoInput>
+                            <div class="d-flex flex-row flex-wrap">
+                                <div *ngFor="let photo of photosSelected; let i = index">
+                                    <img [src]="photo || 'assets/img/no-image.png'" class="img-fluid mb-2" alt="Imagen seleccionada {{i + 1}}" (click)="photoInput.click()" width="50" height="50">
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-sm" (click)="photoInput.click()">Seleccionar Fotos Secundarias</button>
                         </div>
                         <div class="mb-3">
                             <button class="btn btn-secondary btn-lg float-start" routerLink="/phone">VOLVER</button>

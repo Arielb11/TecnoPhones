@@ -20,26 +20,35 @@ export class AccesorioService {
     return this.http.delete(url + id);
   }
 
-  guardarAccesorio(nombre: string, precio: number, imagePath: File): Observable<any> {
+  guardarAccesorio(nombre: string, precio: number, imagenPrincipal: File, imagePaths: File[]): Observable<any> {
     const url = this.baseURL + "accesorios";
     const fd = new FormData();
     fd.append('nombre', nombre);
     fd.append('precio', precio.toString());
-    fd.append('imagePath', imagePath);
+    fd.append('imagenPrincipal', imagenPrincipal);
+    imagePaths.forEach((archivo) => {
+        // Usa el mismo nombre de campo para todos los archivos, conforme a la configuración de Multer
+        fd.append('imagePaths', archivo, archivo.name);
+    });
     return this.http.post(url, fd);
   }
+
+
 
   obtenerAccesorio(id: string): Observable<any> {
     const url = this.baseURL + "accesorios/";
     return this.http.get(url + id);
   }
 
-  editarAccesorio(id: string, nombre: string, precio: number, imagePath: File): Observable<any> {
+  editarAccesorio(id: string, nombre: string, precio: number,imagenPrincipal: File, imagePaths: File[]): Observable<any> {
     const url = this.baseURL + "accesorios/";
     const fd = new FormData();
     fd.append('nombre', nombre);
     fd.append('precio', precio.toString());
-    fd.append('imagePath', imagePath);
+    fd.append('imagenPrincipal', imagenPrincipal);
+    imagePaths.forEach((imagen, index) => {
+      fd.append(`imagePaths`, imagen, imagen.name);
+    });
     return this.http.put(url + id, fd);
   }
 }

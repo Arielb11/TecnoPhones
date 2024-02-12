@@ -22,9 +22,12 @@ export class AgregarPhoneComponent implements OnInit{
   phoneForm: FormGroup;
   titulo = 'Agregar';
   id: string | null;
-  file!: File;
-  photoSelected!: string | ArrayBuffer | null; //Archivo para mostrar la imagen subida
+  imagePaths: File [] = [];
+  imagenPrincipal!: File;
+  photosSelected: (string | ArrayBuffer | null)[] = [];
+  photoSelect!: (string | ArrayBuffer | null) ; //Archivo para mostrar la imagen subida
   mostrarSelect: boolean = true;
+  imagenPrincipalUrl: string | null = null;
 
   constructor (private fb: FormBuilder, private router: Router, private _phoneService: PhoneService, private aRouter: ActivatedRoute) {
     this.phoneForm = this.fb.group({
@@ -34,6 +37,7 @@ export class AgregarPhoneComponent implements OnInit{
       capacidad: ['', Validators.required],
       observaciones: ['', Validators.required],
       valor: ['', Validators.required],
+      visible: ['', Validators.required]
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
   }
@@ -42,37 +46,44 @@ export class AgregarPhoneComponent implements OnInit{
     this.esEditar();
   }
 
-  agregarPhone(){
-    if (this.id !== null){
-      this._phoneService.editarPhone(this.id, this.phoneForm.get('modelo')?.value, this.phoneForm.get('estado')?.value, 
-          this.phoneForm.get('bateria')?.value, this.phoneForm.get('capacidad')?.value, 
-          this.phoneForm.get('observaciones')?.value, this.phoneForm.get('valor')?.value, this.file)
-          .subscribe(data => {
-            Swal.fire({
-              title: "iPhone editado correctamente",
-              icon: "success"
-            });
-            this.router.navigate(['/phone']);
-          }, error => {
-            console.log(error);
-            this.phoneForm.reset();
-          })
+  agregarPhone() {
+    // Extraer valores directamente del formulario
+    const modelo = this.phoneForm.get('modelo')?.value;
+    const estado = this.phoneForm.get('estado')?.value;
+    const bateria = this.phoneForm.get('bateria')?.value;
+    const capacidad = this.phoneForm.get('capacidad')?.value;
+    const observaciones = this.phoneForm.get('observaciones')?.value;
+    const valor = this.phoneForm.get('valor')?.value;
+    const visible = this.phoneForm.get('visible')?.value;
+  
+    if (this.id !== null) {
+      // Si hay un ID, estamos editando un teléfono existente.
+      // Asumiendo que tienes un método similar `editarPhone` que maneja la edición
+      this._phoneService.editarPhone(this.id, modelo, estado, bateria, capacidad, observaciones, valor, visible, this.imagenPrincipal, this.imagePaths).subscribe(data => {
+        Swal.fire({
+          title: "iPhone editado correctamente",
+          icon: "success",
+        });
+        this.router.navigate(['/phone']);
+      }, error => {
+        console.error(error);
+        this.phoneForm.reset();
+      });
     } else {
-      this._phoneService.guardarPhone(this.phoneForm.get('modelo')?.value, this.phoneForm.get('estado')?.value, 
-          this.phoneForm.get('bateria')?.value, this.phoneForm.get('capacidad')?.value, 
-          this.phoneForm.get('observaciones')?.value, this.phoneForm.get('valor')?.value, this.file)
-          .subscribe(data => {
-            Swal.fire({
-              title: "iPhone agregado correctamente",
-              icon: "success"
-            });
-            this.router.navigate(['/phone']);
-          }, error => {
-            console.log(error);
-            this.phoneForm.reset();
-      })
+      // Crear un nuevo teléfono
+      this._phoneService.guardarPhone(modelo, estado, bateria, capacidad, observaciones, valor, visible, this.imagenPrincipal, this.imagePaths).subscribe(data => {
+        Swal.fire({
+          title: "iPhone agregado correctamente",
+          icon: "success",
+        });
+        this.router.navigate(['/phone']);
+      }, error => {
+        console.error(error);
+        this.phoneForm.reset();
+      });
     }
   }
+  
 
   esEditar() {
     if (this.id !== null) {
@@ -86,25 +97,46 @@ export class AgregarPhoneComponent implements OnInit{
           capacidad: data.capacidad,
           observaciones: data.observaciones,
           valor: data.valor,
-          imagePath: this.file,
-        })
-      })
+          visible: data.visible,
+        });
+        this.photosSelected = data.imagePaths.map((path: string) => `http://localhost:3000/${path}`);
+        if(data.imagenPrincipal) {
+          this.photoSelect = `http://localhost:3000/${data.imagenPrincipal}`;
+          this.imagenPrincipalUrl = data.imagenPrincipal;
+        }
+      });
     }
   }
 
-  onPhotoSelected(event: HtmlInputEvent): void {
-    // El if es para corroborar si se subio una imagen
-    if (event.target.files && event.target.files[0]) {
-      //Llena la propiedad file cuando existe un archivo
-      this.file = <File>event.target.files[0]; //Sube el primer archivo que exista
-
-      //Esto es para mostrar en pantalla la foto subida
+  onMainPhotoSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    
+    if (input.files && input.files[0]) {
+      this.imagenPrincipal = input.files[0]; // Asigna la primera imagen seleccionada como imagenPrincipal
+  
       const reader = new FileReader();
-      reader.onload = e => {
-        this.photoSelected = 'assets/img/icon-imagen.png';
-      }
-      reader.readAsDataURL(this.file);
+      reader.onload = (e) => {
+        this.photoSelect = reader.result; // Actualiza la vista previa de la imagenPrincipal
+      };
+      reader.readAsDataURL(input.files[0]);
     }
   }
-
+  
+  // Método existente para imágenes secundarias, sin cambios
+  onPhotoSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    
+    if (input.files) {
+      this.imagePaths = Array.from(input.files);
+      this.photosSelected = [];
+      
+      Array.from(input.files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          this.photosSelected.push(reader.result);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+  }
 }
