@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
 
 }
 .header {
@@ -30,6 +31,7 @@ body {
     color: #000;
     
 }
+
 
 #ads .card-notify-year {
         position: absolute;
@@ -85,4 +87,59 @@ body {
 
 
 
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 10px;
+}
+    
+.logo-title {
+     margin-top: 5px; /* Puedes ajustar el margen según sea necesario */
+}
 
+
+#barra {
+    padding: 0;
+}
+
+#buscador {
+    margin-bottom: 10px;
+}
+
+
+.custom-form {
+    
+    border-radius: 30px; /* Bordes redondeados */
+    padding: 15px 25px; /* Espaciado interno */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+/* Estilo personalizado para el campo de entrada */
+.custom-input {
+    background-color: #f8f9fa; /* Color de fondo gris claro */
+    border: none; /* Borde transparente */
+    outline: none; /* Sin contorno al hacer clic */
+    box-shadow: none; /* Sin sombra */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    width: 70%; /* Ancho del campo de entrada */
+}
+
+/* Estilo personalizado para el botón */
+.custom-btn {
+    background-color: #aa7831; /* Color de fondo azul */
+    border: none; /* Borde transparente */
+    color: #ffffff; /* Color de texto blanco */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 10px 25px; /* Espaciado interno */
+    transition: background-color 0.3s ease; /* Transición suave */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+/* Estilo personalizado para cambiar el color del botón al pasar el ratón */
+.custom-btn:hover {
+    background-color: #fff8b4; /* Color de fondo azul oscuro */
+}
