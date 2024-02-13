@@ -1,5 +1,6 @@
 const phoneModel = require ("./phoneModel");
 const fs = require('fs');
+const path = require('path');
 
 
 module.exports = {
@@ -82,19 +83,19 @@ module.exports = {
 
 const eliminarImagen = async (id) => {
     try {
-        const accesorio = await accesorioModel.findById(id);
-        if (accesorio) {
+        const phone = await phoneModel.findById(id);
+        if (phone) {
             // Elimina la imagen principal si existe
-            if (accesorio.imagenPrincipal) {
-                const imagenPrincipalPath = path.join(__dirname, 'public', accesorio.imagenPrincipal);
+            if (phone.imagenPrincipal) {
+                const imagenPrincipalPath = path.join(__dirname, 'public', phone.imagenPrincipal);
                 if (fs.existsSync(imagenPrincipalPath)) {
                     fs.unlinkSync(imagenPrincipalPath);
                 }
             }
             
             // Elimina las imágenes secundarias si existen
-            if (accesorio.imagePaths && accesorio.imagePaths.length) {
-                accesorio.imagePaths.forEach(imgPath => {
+            if (phone.imagePaths && phone.imagePaths.length) {
+                phone.imagePaths.forEach(imgPath => {
                     const fullPath = path.join(__dirname, 'public', imgPath);
                     if (fs.existsSync(fullPath)) {
                         fs.unlinkSync(fullPath);

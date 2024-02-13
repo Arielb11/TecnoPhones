@@ -1,4 +1,3 @@
-const { Console } = require("console");
 const accesorioModel = require ("./accesorioModel");
 const fs = require('fs');
 const path = require('path');

@@ -677,18 +677,6 @@ p {
   color: #000; /* Cambia el color al pasar el mouse (puedes ajustarlo) */
 }
 
-/*------------------*/
-/*---------------------------------------------------------------------------
-.footer {
-  background-color: #18181b;
-  padding: 1em 0;
-  text-align: center;
-  position: absolute;
-  bottom: 4;
-  width: 100%;
-  
-}
-*/
 /*------------------------------------PANTALLAS MEDIANAS------------------------------------------*/
 @media (max-width: 1440px) {
 
