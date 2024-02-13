@@ -4,7 +4,7 @@
 
 body {
     font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
-
+    
 }
 .header {
     background-color: #18181b;
@@ -24,6 +24,9 @@ body {
 
 #ads {
     margin: 30px 0 30px 0;
+    border: 1px solid #aa7831; /* Color y grosor del borde */
+    border-radius: 10px; /* Radio de los bordes */
+    padding: 10px; /* Espacio interno para separar las tarjetas del borde */
    
 }
 
@@ -32,6 +35,9 @@ body {
     
 }
 
+#fondo{
+    background-color: #dbd7d7;
+}
 
 #ads .card-notify-year {
         position: absolute;
@@ -143,3 +149,133 @@ body {
 .custom-btn:hover {
     background-color: #fff8b4; /* Color de fondo azul oscuro */
 }
+
+
+
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    display: block;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+.card-overlay .badge {
+    margin-right: 5px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    margin-bottom: 10px;
+}
+
+.card-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+
+.card-hover {
+    transition: transform 0.3s;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+}
+
+.card-hover:hover .card-overlay {
+    opacity: 1;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+.capacity, .battery {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.card-hover:hover .card-overlay {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+
+.custom-font {
+    font-family: 'inherit', sans-serif; /* Reemplaza 'TuTipoDeFuente' con el nombre de tu tipo de fuente deseado */
+}
+
+
+.custom-font-model {
+    font-family: 'inherit', sans-serif; /* Reemplaza 'OtroTipoDeFuente' con el nombre de tu otro tipo de fuente deseado para el modelo */
+}
+
+
+.main-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #000000;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(50px); /* Empieza ligeramente desplazado hacia abajo */
+    animation: fadeInUp 1s ease forwards; /* Animación de entrada */
+}
+
+.line {
+    width: 100px;
+    height: 3px;
+    background-color: #aa7831;
+    margin: 0 auto;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Se desplaza hacia arriba a su posición final */
+    }
+}
+
