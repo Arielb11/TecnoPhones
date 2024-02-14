@@ -4,7 +4,7 @@ import { Phone } from '../../models/phone';
 import { error } from 'console';
 import { CommonModule } from '@angular/common';
 
-
+declare var $: any; // Importa jQuery para utilizar Bootstrap
 
 @Component({
   selector: 'app-phone-usados',
@@ -14,16 +14,41 @@ import { CommonModule } from '@angular/common';
   styleUrl: './phone-usados.component.css'
 })
 export class PhoneUsadosComponent implements OnInit {
-  listaCelulares:Phone[]=[];
+  listaCelulares: Phone[] = [];
   ngOnInit(): void {
     this.obtenerPhones();
-  } 
-    constructor(private _phoneService:PhoneService){}
+    // Inicia el carrusel y la reproducción automática después de que los datos se carguen
+    this.initCarousel();
+  }
 
-    obtenerPhones(){
-      this._phoneService.getPhones().subscribe(data =>{
-        this.listaCelulares= data;
-        
-      },error =>{console.log(error)});
-    }
+  constructor(private _phoneService: PhoneService) { }
+
+  obtenerPhones() {
+    this._phoneService.getPhones().subscribe(
+      data => {
+        this.listaCelulares = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  initCarousel() {
+    $(document).ready(() => {
+      // Inicializa el carrusel
+      $('.carousel').carousel();
+
+      // Configura un intervalo para cambiar las imágenes cada 3 segundos
+      setInterval(() => {
+        this.nextSlide();
+      }, 4500);
+    });
+  }
+
+  nextSlide() {
+    // Cambia al siguiente slide del carrusel
+    $('.carousel').carousel('next');
+  }
 }
+
