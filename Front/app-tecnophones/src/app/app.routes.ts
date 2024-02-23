@@ -10,6 +10,7 @@ import { PhoneUsadosComponent } from './components/phone-usados/phone-usados.com
 import { AccesorioComponent } from './components/accesorio/accesorio.component';
 import { AgregarAccesorioComponent } from './components/agregar-accesorio/agregar-accesorio.component';
 import { VistaAccesoriosComponent } from './components/vista-accesorios/vista-accesorios.component';
+import { DetallesIphoneComponent } from './components/detalles-iphone/detalles-iphone.component';
 import { LoginGuard } from './guards/login.guard';
 
 
@@ -19,6 +20,7 @@ export const routes: Routes = [
     {path: 'iPhoneNuevos', component: PhoneNuevosComponent},
     {path: 'iPhoneUsados', component: PhoneUsadosComponent},
     {path: 'list-accesorios', component: VistaAccesoriosComponent},
+    {path: 'detalles-iphone/:id', component: DetallesIphoneComponent},
     {path: 'accesorio', component: AccesorioComponent, canActivate: [LoginGuard]},
     {path: 'agregar-accesorios', component: AgregarAccesorioComponent, canActivate: [LoginGuard]},
     {path: 'editar-accesorios/:id', component: AgregarAccesorioComponent, canActivate: [LoginGuard]},

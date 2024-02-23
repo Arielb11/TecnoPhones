@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { PhoneService } from '../../services/phone.service';
 import { Phone } from '../../models/phone';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-phone-usados',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './phone-usados.component.html',
   styleUrl: './phone-usados.component.css'
 })
