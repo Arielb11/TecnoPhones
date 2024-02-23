@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { PhoneService } from '../../services/phone.service';
 import { Phone } from '../../models/phone';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-detalles-iphone',
   standalone: true,
-  imports: [CommonModule, NgxImageZoomModule],
+  imports: [CommonModule, FooterComponent],
   templateUrl: './detalles-iphone.component.html',
   styleUrl: './detalles-iphone.component.css'
 })
