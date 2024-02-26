@@ -19,22 +19,6 @@
     width: 100%;
   }
 
-.card-title {
-    font-family: 'Heebo Bold' !important;
-    font-size: 50px;
-    line-height: 35px;
-    letter-spacing: .14px;
-    font-weight: bold;
-}
-
-.small-heading {
-  font-size: 1.25rem; /* Ajusta el tamaño del título */
-}
-
-.small-text {
-  font-size: 0.9rem; /* Ajusta el tamaño del párrafo */
-}
-
   /* Añadiendo un poco de CSS para efectos suaves */
   .card:hover {
     transform: scale(1.05); /* Efecto de zoom sutil al pasar el mouse */
