@@ -48,7 +48,7 @@
                 <!--boton Informacion -->
 
                 <form class="d-flex align-items-center justify-content-between custom-form">
-                    <input class="form-control me-2 custom-input" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2 custom-input" type="text" name="search" placeholder="Search" aria-label="Search" [(ngModel)]="search" (input)="this.buscar()">
                     <button class="btn custom-btn" type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i> <!-- Icono de lupa -->
                     </button>

@@ -14,5 +14,6 @@ router.put('/:id', subirImagen.fields([
     { name: 'imagePaths', maxCount: 6 }
   ]), phoneService.update)
 router.delete('/:id', phoneService.delete)
+router.get('/iphoneSearch/:texto_busqueda', phoneService.buscar)
 
 module.exports = router;
