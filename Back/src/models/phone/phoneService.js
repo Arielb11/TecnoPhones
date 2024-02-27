@@ -69,7 +69,6 @@ module.exports = {
             .then(data => res.json(data))
             .catch(error => res.json({ message: error }));
     },
-     
 
     delete: async(req, res) => {
         const {id} = req.params;
@@ -78,6 +77,16 @@ module.exports = {
             .deleteOne({ _id: id})
             .then((data) => res.json(data))
             .catch((error) => res.json({message: error}));
+    },
+
+    buscar: async(req, res) => {
+        try {
+            const {texto_busqueda} = req.params;
+            let phones = await phoneModel.find({"modelo": new RegExp('.*' + texto_busqueda + '.*')});
+            Response.success(res, 200, 'Busqueda por texto: ', phones);
+        } catch (error) {
+            Response.error(res);
+        }
     }
 }
 

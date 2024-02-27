@@ -1,24 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { PhoneService } from '../../services/phone.service';
 import { Phone } from '../../models/phone';
+import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-phone-usados',
   standalone: true,
-  imports: [CommonModule, RouterLink,FooterComponent],
+  imports: [FormsModule, RouterModule, FooterComponent, CommonModule],
   templateUrl: './phone-usados.component.html',
   styleUrl: './phone-usados.component.css'
 })
 export class PhoneUsadosComponent implements OnInit{
   listaCelulares: Phone[] = [];
+  suscripcion:Subscription | undefined;
+  search:String | undefined;
+  
+  constructor(private _phoneService: PhoneService) {
+    this.search = '';
+   }
+
   ngOnInit(): void {
     this.obtenerPhones();
   }
-
-  constructor(private _phoneService: PhoneService) { }
 
   obtenerPhones() {
     this._phoneService.getPhones().subscribe(
@@ -30,6 +37,22 @@ export class PhoneUsadosComponent implements OnInit{
       }
     );
   }
+
+  buscar(){
+    if (this.search === "") {
+      this.obtenerPhones();
+    }else{
+      this._phoneService.buscar(this.search).subscribe( 
+        data => {
+          this.listaCelulares = data;
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+  }
+
 
 }
 

@@ -1,16 +1,22 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject} from 'rxjs';
 import { Phone } from '../models/phone';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PhoneService {
   readonly baseURL = 'http://localhost:3000/api/';
+  private _refresh$ = new Subject<void>();
 
   constructor(private http: HttpClient) { }
 
+  get refresh$(){
+    return this._refresh$;
+  }
+  
   getPhones(): Observable<any>{
     const url = this.baseURL + "phones";
     return this.http.get(url);
@@ -60,5 +66,10 @@ export class PhoneService {
       fd.append(`imagePaths`, imagen, imagen.name);
     });
     return this.http.put(url + id, fd);
+  }
+
+  buscar = (texto_busqueda: any) =>{
+    const url = this.baseURL + `phones/iphoneSearch/${texto_busqueda}`;
+    return this.http.get<any>(url);
   }
 }

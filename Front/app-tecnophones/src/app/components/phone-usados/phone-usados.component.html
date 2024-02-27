@@ -48,7 +48,7 @@
                 <!--boton Informacion -->
 
                 <form class="d-flex align-items-center justify-content-between custom-form">
-                    <input class="form-control me-2 custom-input" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2 custom-input" type="text" name="search" placeholder="Search" aria-label="Search" [(ngModel)]="search" (input)="this.buscar()">
                     <button class="btn custom-btn" type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i> <!-- Icono de lupa -->
                     </button>
@@ -95,25 +95,28 @@
                          <!-- Nuevo contenedor para las tarjetas -->
                         <!-- Category Cards -->
                             <div class="col-lg-4 mb-4" *ngFor="let celular of listaCelulares">
-                                <div class="card" [routerLink]="['/detalles-iphone/', celular._id]">
-                                    <div class="card-image card-hover">
-                                        <img [src]="'http://localhost:3000/' + celular.imagenPrincipal" alt="" class="img-card-top">
-                                        <div class="card-overlay">
-                                            <div class="capacity">
-                                                {{celular.capacidad}} GB
-                                            </div>
-                                            <div class="battery">
-                                                <i class="fas fa-battery-full"></i> {{celular.bateria}} %
+                                <div class="card" >
+                                    <a [routerLink]="['/detalles-iphone/', celular._id]">
+                                        <div class="card-image card-hover">
+                                            <img [src]="'http://localhost:3000/' + celular.imagenPrincipal" alt="" class="img-card-top">
+                                            <div class="card-overlay">
+                                                <div class="capacity">
+                                                    {{celular.capacidad}} GB
+                                                </div>
+                                                <div class="battery">
+                                                    <i class="fas fa-battery-full"></i> {{celular.bateria}} %
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title text-uppercase font-weight-bold custom-font-model">{{celular.modelo}}</h5>
-                                        <h3 class="card-price font-weight-bold custom-font" style="color: #0d53d4">$USD {{celular.valor | number:'1.2-2' }}</h3>
-                                    </div>
-                                    <div class="mt-auto">
-                                        <div class="card-footer  text-center " style="color: rgb(61, 141, 81);"><i class="fas fa-truck"></i> Envíos a todo el país</div>
-                                    </div>
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title text-uppercase font-weight-bold custom-font-model">{{celular.modelo}}</h5>
+                                            <h3 class="card-price font-weight-bold custom-font" style="color: #0d53d4">$USD {{celular.valor | number:'1.2-2' }}</h3>
+                                        </div>
+                                        <div class="mt-auto">
+                                            <div class="card-footer  text-center " style="color: rgb(61, 141, 81);"><i class="fas fa-truck"></i> Envíos a todo el país</div>
+                                        </div>
+                                    </a>
+                                    
                                 </div>
                             </div>   
                     </div>

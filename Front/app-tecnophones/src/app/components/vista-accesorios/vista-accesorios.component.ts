@@ -8,7 +8,7 @@ import { FooterComponent } from '../footer/footer.component';
 @Component({
   selector: 'app-vista-accesorios',
   standalone: true,
-  imports: [CommonModule, FooterComponent],
+  imports: [CommonModule, FooterComponent, RouterModule],
   templateUrl: './vista-accesorios.component.html',
   styleUrl: './vista-accesorios.component.css'
 })
