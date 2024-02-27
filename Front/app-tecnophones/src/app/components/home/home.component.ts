@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 
 @Component({
@@ -10,12 +9,7 @@ import { FooterComponent } from '../footer/footer.component';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  constructor(private router: Router) {}
-  direccion() {
-    this.router.navigate(['/phone-nuevos']);
-  }
-
-  
+ 
 
 }
 
