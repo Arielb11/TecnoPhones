@@ -68,7 +68,7 @@ export class PhoneService {
     return this.http.put(url + id, fd);
   }
 
-  buscar = (texto_busqueda: any) =>{
+  buscar (texto_busqueda: any): Observable<any> {
     const url = this.baseURL + `phones/iphoneSearch/${texto_busqueda}`;
     return this.http.get<any>(url);
   }

@@ -73,21 +73,29 @@
         <!-- Columna para los detalles del teléfono -->
         <div class="col-md-6">
             <div class="phone-details">
-                <h2 class="mt-5 mb-5"><strong>{{ phoneDetails.modelo }} {{ phoneDetails.capacidad }}GB </strong></h2>
+                <h2 class="mt-5 mb-5 text-uppercase"><strong>{{ phoneDetails.modelo }} {{ phoneDetails.capacidad }}GB </strong></h2>
                 <h5 class="text-start">Almacenamiento:</h5>
                 <p class="text-start"><span style="border: 1px solid black" class="p-1">{{ phoneDetails.capacidad }} GB</span></p>
-                <h5 class="text-start">Condición de batería:</h5>
-                <div class="battery text-start mb-1">
-                    <i class="fas fa-battery-full"></i> {{phoneDetails.bateria}} %
-                </div>
+                <ng-container *ngIf="phoneDetails.estado === 'Usado'">
+                    <h5 class="text-start">Condición de batería:</h5>
+                    <div class="battery text-start mb-1">
+                        <i class="fas fa-battery-full"></i> {{phoneDetails.bateria}} %
+                    </div>
+                </ng-container>
                 <h5 class="text-start">Observaciones:</h5>
                 <p class="text-start">{{phoneDetails.observaciones}}</p>
                 <h3 style="color: #0d53d4">$USD {{phoneDetails.valor | number:'1.2-2' }}</h3>
                 <div class="mt-3 pt-2" id="info-adicional">
-                    <p class="text-start"><strong>Garantía de 30 días</strong> brindada por nosotros.</p>
+                    <ng-container *ngIf="phoneDetails.estado === 'Usado'">
+                        <p class="text-start"><strong>Garantía de 30 días</strong> brindada por nosotros.</p>
+                    </ng-container>
+                    <ng-container *ngIf="phoneDetails.estado === 'Nuevo'">
+                        <p class="text-start"><strong>Garantía de 12 meses</strong> oficial de Apple.</p>
+                        <p class="text-start">Equipos nuevos en caja sellada.</p>
+                    </ng-container>
                     <p class="text-start">Tomamos tu usado como <strong>parte de pago.</strong></p>
                     <p class="text-start mt-2"><i class="fas fa-truck"  style="color: rgb(61, 141, 81);"></i> Hacemos envíos a <strong>todo el país.</strong></p>
-                    <a href="https://wa.me/+543445433772" class="btn btn-success" target="_blank">Consulta por WhatsApp <i class="fab fa-whatsapp"></i></a>
+                    <a href="https://wa.me/+543445433772" class="btn btn-success m-2" target="_blank">Consulta por WhatsApp <i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             

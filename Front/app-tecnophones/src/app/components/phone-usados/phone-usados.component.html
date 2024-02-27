@@ -94,8 +94,9 @@
                         
                          <!-- Nuevo contenedor para las tarjetas -->
                         <!-- Category Cards -->
-                            <div class="col-lg-4 mb-4" *ngFor="let celular of listaCelulares">
-                                <div class="card" >
+                        <ng-container *ngFor="let celular of listaCelulares">
+                            <div class="col-lg-4 mb-4" *ngIf="celular.estado === 'Usado'">
+                                <div class="card">
                                     <a [routerLink]="['/detalles-iphone/', celular._id]">
                                         <div class="card-image card-hover">
                                             <img [src]="'http://localhost:3000/' + celular.imagenPrincipal" alt="" class="img-card-top">
@@ -113,12 +114,12 @@
                                             <h3 class="card-price font-weight-bold custom-font" style="color: #0d53d4">$USD {{celular.valor | number:'1.2-2' }}</h3>
                                         </div>
                                         <div class="mt-auto">
-                                            <div class="card-footer  text-center " style="color: rgb(61, 141, 81);"><i class="fas fa-truck"></i> Envíos a todo el país</div>
+                                            <div class="card-footer text-center " style="color: rgb(61, 141, 81);"><i class="fas fa-truck"></i> Envíos a todo el país</div>
                                         </div>
                                     </a>
-                                    
                                 </div>
-                            </div>   
+                            </div>
+                        </ng-container> 
                     </div>
                 </div>
             </div>

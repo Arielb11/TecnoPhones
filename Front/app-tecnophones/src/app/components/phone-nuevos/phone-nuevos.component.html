@@ -48,7 +48,7 @@
                  <!--boton Informacion -->
  
                  <form class="d-flex align-items-center justify-content-between custom-form">
-                     <input class="form-control me-2 custom-input" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2 custom-input" type="text" name="search" placeholder="Search" aria-label="Search" [(ngModel)]="search" (input)="this.buscar()">
                      <button class="btn custom-btn" type="submit">
                          <i class="fa-solid fa-magnifying-glass"></i> <!-- Icono de lupa -->
                      </button>
@@ -94,16 +94,14 @@
                          
                           <!-- Nuevo contenedor para las tarjetas -->
                          <!-- Category Cards -->
-                             <div class="col-lg-4 mb-4" *ngFor="let celular of listaCelulares">
+                        <ng-container *ngFor="let celular of listaCelulares">
+                            <div class="col-lg-4 mb-4" *ngIf="celular.estado === 'Nuevo'">
                                  <div class="card" [routerLink]="['/detalles-iphone/', celular._id]">
                                      <div class="card-image card-hover">
                                          <img [src]="'http://localhost:3000/' + celular.imagenPrincipal" alt="" class="img-card-top">
                                          <div class="card-overlay">
                                              <div class="capacity">
                                                  {{celular.capacidad}} GB
-                                             </div>
-                                             <div class="battery">
-                                                 <i class="fas fa-battery-full"></i> {{celular.bateria}} %
                                              </div>
                                          </div>
                                      </div>
@@ -114,8 +112,9 @@
                                      <div class="mt-auto">
                                          <div class="card-footer  text-center " style="color: rgb(61, 141, 81);"><i class="fas fa-truck"></i> Envíos a todo el país</div>
                                      </div>
-                                 </div>
-                             </div>   
+                                </div>
+                            </div>   
+                        </ng-container>
                      </div>
                  </div>
              </div>

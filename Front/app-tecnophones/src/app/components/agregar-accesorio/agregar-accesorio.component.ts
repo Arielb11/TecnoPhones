@@ -28,6 +28,7 @@ export class AgregarAccesorioComponent implements OnInit{
   constructor (private fb: FormBuilder, private router: Router, private _accesorioService: AccesorioService, private aRouter: ActivatedRoute) {
     this.accesorioForm = this.fb.group({
       nombre: ['', Validators.required],
+      descripcion: ['', Validators.required],
       precio: ['', Validators.required],
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
@@ -40,7 +41,7 @@ export class AgregarAccesorioComponent implements OnInit{
   agregarAccesorio(){
     if (this.id !== null){
       console.log(this.imagenPrincipal);
-      this._accesorioService.editarAccesorio(this.id, this.accesorioForm.get('nombre')?.value, this.accesorioForm.get('precio')?.value, this.imagenPrincipal, this.imagePaths)
+      this._accesorioService.editarAccesorio(this.id, this.accesorioForm.get('nombre')?.value, this.accesorioForm.get('descripcion')?.value, this.accesorioForm.get('precio')?.value, this.imagenPrincipal, this.imagePaths)
         .subscribe(data => {
           Swal.fire({
             title: "Accesorio editado correctamente",
@@ -52,7 +53,7 @@ export class AgregarAccesorioComponent implements OnInit{
         this.accesorioForm.reset();
       })
     } else {
-      this._accesorioService.guardarAccesorio(this.accesorioForm.get('nombre')?.value, this.accesorioForm.get('precio')?.value,this.imagenPrincipal,  this.imagePaths)
+      this._accesorioService.guardarAccesorio(this.accesorioForm.get('nombre')?.value, this.accesorioForm.get('descripcion')?.value, this.accesorioForm.get('precio')?.value,this.imagenPrincipal,  this.imagePaths)
       .subscribe(data => {
         Swal.fire({
           title: "Accesorio agregado correctamente",
@@ -72,6 +73,7 @@ export class AgregarAccesorioComponent implements OnInit{
       this._accesorioService.obtenerAccesorio(this.id).subscribe(data => {
         this.accesorioForm.setValue({
           nombre: data.nombre,
+          descripcion: data.descripcion,
           precio: data.precio
         });
         console.log(data.imagenPrincipal);

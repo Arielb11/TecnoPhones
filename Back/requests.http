@@ -16,11 +16,11 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/api/phones HTTP/1.1
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWE5NzhhNzA2MzVhMDU3ZWQwMDNkM2QiLCJpYXQiOjE3MDU2ODk1MTh9.Ps8tdxzrxYl-A-Ne-RiOWL6Lwc47xaWQFZizHPoqSWA
+GET http://localhost:3000/api/phones/iphoneSearch/14 HTTP/1.1
+
 
 ###
-GET http://localhost:9000/api/phones/65a1a6f7d97a2cc00c5286e6 HTTP/1.1
+GET http://localhost:3000/api/phones HTTP/1.1
 ###
 PUT http://localhost:9000/api/phones/65a1a6f7d97a2cc00c5286e6 HTTP/1.1
 Content-Type: application/json

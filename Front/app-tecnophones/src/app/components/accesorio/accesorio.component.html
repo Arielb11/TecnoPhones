@@ -53,6 +53,7 @@
                         <thead>
                           <tr>
                             <th scope="col">Nombre</th>
+                            <th scope="col">Descripcion</th>
                             <th scope="col">Precio</th>
                             <th scope="col"></th>
                           </tr>
@@ -60,6 +61,7 @@
                         <tbody>
                           <tr *ngFor="let accesorio of listAccesorios">
                             <td>{{ accesorio.nombre }}</td>
+                            <td>{{ accesorio.descripcion }}</td>
                             <td>$USD {{ accesorio.precio | number:'1.2-2' }}</td>
                             <td>
                                 <i [routerLink]="['/editar-accesorios', accesorio._id]" class="fas fa-solid fa-pen-to-square text-primary"></i>

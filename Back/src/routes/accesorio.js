@@ -14,5 +14,6 @@ router.put('/:id', subirImagen.fields([
     { name: 'imagePaths', maxCount: 6 }
   ]), accesorioService.update)
 router.delete('/:id', accesorioService.delete)
+router.get('/accSearch/:texto_busqueda', accesorioService.buscar)
 
 module.exports = router;
