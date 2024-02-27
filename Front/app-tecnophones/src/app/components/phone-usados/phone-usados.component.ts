@@ -3,11 +3,12 @@ import { PhoneService } from '../../services/phone.service';
 import { Phone } from '../../models/phone';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-phone-usados',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink,FooterComponent],
   templateUrl: './phone-usados.component.html',
   styleUrl: './phone-usados.component.css'
 })
