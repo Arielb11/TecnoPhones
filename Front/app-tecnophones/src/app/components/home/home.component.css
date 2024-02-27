@@ -19,29 +19,13 @@
     width: 100%;
   }
 
-.card-title {
-    font-family: 'Heebo Bold' !important;
-    font-size: 50px;
-    line-height: 35px;
-    letter-spacing: .14px;
-    font-weight: bold;
-}
-
-.small-heading {
-  font-size: 1.25rem; /* Ajusta el tamaño del título */
-}
-
-.small-text {
-  font-size: 0.9rem; /* Ajusta el tamaño del párrafo */
-}
-
-/* Añadiendo un poco de CSS para efectos suaves */
-.card:hover {
-  transform: scale(1.05); /* Efecto de zoom sutil al pasar el mouse */
-  transition: transform 0.5s ease; /* Transición suave */
-  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hover */
-}
-.btn:hover {
-  transform: translateY(-2px); /* Botón se mueve ligeramente hacia arriba al pasar el mouse */
-  transition: transform 0.4s ease;
-}
+  /* Añadiendo un poco de CSS para efectos suaves */
+  .card:hover {
+    transform: scale(1.05); /* Efecto de zoom sutil al pasar el mouse */
+    transition: transform 0.5s ease; /* Transición suave */
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hover */
+  }
+  .btn:hover {
+    transform: translateY(-2px); /* Botón se mueve ligeramente hacia arriba al pasar el mouse */
+    transition: transform 0.4s ease;
+  }
