@@ -61,6 +61,12 @@
                                 </div>
                             </div>
                             <div class="mb-3">
+                                <input type="text" formControlName="descripcion" class="form-control form-control-lg" placeholder="Descripcion">
+                                <div class="text-danger" *ngIf="accesorioForm.get('descripcion')?.hasError('required') && accesorioForm.get('descripcion')?.touched">
+                                    <span>La descripcion <strong>es obligatoria</strong></span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
                                 <input type="text" formControlName="precio" class="form-control form-control-lg" placeholder="Precio">
                                 <div class="text-danger" *ngIf="accesorioForm.get('precio')?.hasError('required') && accesorioForm.get('precio')?.touched">
                                     <span>El precio <strong>es obligatorio</strong></span>

@@ -4,7 +4,6 @@ import { PhoneComponent } from './components/phone/phone.component';
 import { HomeComponent } from './components/home/home.component';
 import { AgregarPhoneComponent } from './components/agregar-phone/agregar-phone.component';
 import { LoginComponent } from './components/login/login.component';
-import { VistaPhonesComponent } from './components/vista-phones/vista-phones.component';
 import { PhoneNuevosComponent } from './components/phone-nuevos/phone-nuevos.component';
 import { PhoneUsadosComponent } from './components/phone-usados/phone-usados.component';
 import { AccesorioComponent } from './components/accesorio/accesorio.component';
@@ -16,7 +15,6 @@ import { DetallesAccesorioComponent } from './components/detalles-accesorio/deta
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'phones', component: VistaPhonesComponent},
     {path: 'iPhoneNuevos', component: PhoneNuevosComponent},
     {path: 'iPhoneUsados', component: PhoneUsadosComponent},
     {path: 'list-accesorios', component: VistaAccesoriosComponent},

@@ -19,9 +19,7 @@ export class PhoneUsadosComponent implements OnInit{
   suscripcion:Subscription | undefined;
   search:String | undefined;
   
-  constructor(private _phoneService: PhoneService) {
-    this.search = '';
-   }
+  constructor(private _phoneService: PhoneService) {   }
 
   ngOnInit(): void {
     this.obtenerPhones();
@@ -44,7 +42,9 @@ export class PhoneUsadosComponent implements OnInit{
     }else{
       this._phoneService.buscar(this.search).subscribe( 
         data => {
+          console.log("Hola");
           this.listaCelulares = data;
+          console.log(this.listaCelulares);
         },
         error => {
           console.log(error);
@@ -52,7 +52,6 @@ export class PhoneUsadosComponent implements OnInit{
       );
     }
   }
-
 
 }
 

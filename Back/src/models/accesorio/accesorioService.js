@@ -4,15 +4,16 @@ const path = require('path');
 
 module.exports = {
     create: async(req, res) => {
-        const {nombre, precio} = req.body;
+        const {nombre, precio, descripcion} = req.body;
         const imagenPrincipal = req.files.imagenPrincipal ? '/uploads/' + req.files.imagenPrincipal[0].filename : null;
         const imagePaths = req.files.imagePaths ? req.files.imagePaths.map(file => '/uploads/' + file.filename) : [];
     
         const nuevoAccesorio = new accesorioModel({
             nombre,
+            descripcion,
             precio,
             imagePaths,
-            imagenPrincipal, // Asegúrate de que el modelo y la base de datos puedan manejar este campo correctamente
+            imagenPrincipal,
         });
     
         nuevoAccesorio.save()
@@ -37,10 +38,11 @@ module.exports = {
 
     update: async(req, res) => {
         const { id } = req.params;
-        const { nombre, precio } = req.body;
+        const { nombre, precio, descripcion } = req.body;
     
         let updateData = {
             nombre,
+            descripcion,
             precio,
         };
         console.log(req.files);
@@ -67,6 +69,14 @@ module.exports = {
         await eliminarImagen(id);
         accesorioModel
             .deleteOne({ _id: id})
+            .then((data) => res.json(data))
+            .catch((error) => res.json({message: error}));
+    },
+
+    buscar: async(req, res) => {
+        const {texto_busqueda} = req.params;
+        accesorioModel
+            .find({"nombre": new RegExp(texto_busqueda, 'i')})
             .then((data) => res.json(data))
             .catch((error) => res.json({message: error}));
     }
