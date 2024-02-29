@@ -1,32 +1,23 @@
-const phoneModel = require ("./phoneModel");
+const macbookModel = require ('./macbookModel');
 const fs = require('fs');
 const path = require('path');
 
-
 module.exports = {
     create: async(req, res) => {
-            const {modelo, estado, bateria, capacidad, observaciones, valor, visible} = req.body;
-            const imagenPrincipal = req.files.imagenPrincipal ? '/uploads/' + req.files.imagenPrincipal[0].filename : null;
-            const imagePaths = req.files.imagePaths ? req.files.imagePaths.map(file => '/uploads/' + file.filename) : [];
-            const nuevoPhone = new phoneModel({
-                modelo,
-                estado,
-                bateria,
-                capacidad,
-                observaciones,
-                valor,
-                visible,
-                imagenPrincipal,
-                imagePaths
-            })
-            nuevoPhone
-                .save()
-                .then((data) => res.json(data))
-                .catch((error) => res.json({message: error}));
+        const { modelo, caracteristicas, memoria, almacenamiento, precio, visible } = req.body;
+        const imagenPrincipal = req.files.imagenPrincipal ? '/uploads/' + req.files.imagenPrincipal[0].filename : null;
+        const imagePaths = req.files.imagePaths ? req.files.imagePaths.map(file => '/uploads/' + file.filename) : [];
+        const nuevoMacbook = new macbookModel({
+            modelo, caracteristicas, memoria, almacenamiento, precio, visible, imagenPrincipal, imagePaths
+        })
+        nuevoMacbook
+            .save()
+            .then((data) => res.json(data))
+            .catch((error) => res.json({message: error}));
     },
 
     get: async(req, res) => {
-        phoneModel
+        macbookModel
             .find()
             .then((data) => res.json(data))
             .catch((error) => res.json({message: error}));
@@ -34,7 +25,7 @@ module.exports = {
 
     getByID: async(req, res) => {
         const {id} = req.params;
-        phoneModel
+        macbookModel
             .findById(id)
             .then((data) => res.json(data))
             .catch((error) => res.json({message: error}));
@@ -42,30 +33,22 @@ module.exports = {
 
     update: async(req, res) => {
         const { id } = req.params;
-        const {modelo, estado, bateria, capacidad, observaciones, valor, visible} = req.body; 
-    
+        const { modelo, caracteristicas, memoria, almacenamiento, precio, visible } = req.body;
+
         let updateData = {
-            modelo, 
-            estado, 
-            bateria, 
-            capacidad, 
-            observaciones, 
-            valor, 
-            visible,
+            modelo, caracteristicas, memoria, almacenamiento, precio, visible
         }
         if (req.files.imagenPrincipal && req.files.imagenPrincipal.length > 0) {
             const imagenPrincipalPath = '/uploads/' + req.files.imagenPrincipal[0].filename;
             updateData.imagenPrincipal = imagenPrincipalPath;
-            // Considera eliminar la imagen principal antigua aquí si es necesario
         }
     
         if (req.files.imagePaths && req.files.imagePaths.length > 0) {
             const imagePaths = req.files.imagePaths.map(file => '/uploads/' + file.filename);
             updateData.imagePaths = imagePaths;
-            // Considera eliminar las imágenes secundarias antiguas aquí si es necesario
         }
 
-        phoneModel.updateOne({ _id: id }, { $set: updateData })
+        macbookModel.updateOne({ _id: id }, { $set: updateData })
             .then(data => res.json(data))
             .catch(error => res.json({ message: error }));
     },
@@ -73,7 +56,7 @@ module.exports = {
     delete: async(req, res) => {
         const {id} = req.params;
         await eliminarImagen(id);
-        phoneModel
+        macbookModel
             .deleteOne({ _id: id})
             .then((data) => res.json(data))
             .catch((error) => res.json({message: error}));
@@ -86,6 +69,7 @@ module.exports = {
             .then((data) => res.json(data))
             .catch((error) => res.json({message: error}));
     }
+
 }
 
 const eliminarImagen = async (id) => {
