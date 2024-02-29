@@ -8,13 +8,11 @@
             </a>
             
         <!-- boton del menu -->
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- elementos del menu colapsable -->
-
             <div class="collapse navbar-collapse " id="menu">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
@@ -47,12 +45,11 @@
 
                 
                 <!--boton Informacion -->
-
                 <a><i class="fab fa-apple apple-icon"></i></a>
             </div>
         </div>  
     </nav>
-  <!--------------- Fin Nav -------------------->
+    <!--------------- Fin Nav -------------------->
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
@@ -60,25 +57,42 @@
                     <div class="card-body">
                         <div class="text-center">
                             <span class="titulo text-center">{{ titulo | uppercase}}</span>
-                        </div> 
-                        <form class="mt-3" [formGroup]="accesorioForm" (ngSubmit)="agregarAccesorio()">
+                        </div>         
+                        <form class="mt-3" [formGroup]="phoneForm" (ngSubmit)="agregarPhone()">
                             <div class="mb-3">
-                                <input type="text" formControlName="nombre" class="form-control form-control-lg" placeholder="Nombre">
-                                <div class="text-danger" *ngIf="accesorioForm.get('nombre')?.hasError('required') && accesorioForm.get('nombre')?.touched">
-                                    <span>El nombre <strong>es obligatorio</strong></span>
+                                <input type="text" formControlName="modelo" class="form-control form-control-lg resaltado" placeholder="Modelo">
+                                <div class="text-danger" *ngIf="phoneForm.get('modelo')?.hasError('required') && phoneForm.get('modelo')?.touched">
+                                    <span>El modelo <strong>es obligatorio</strong></span>
+                                </div>
+                            </div>
+                            <div class="mb-3" *ngIf="mostrarSelect">
+                                <label>Estado</label>
+                                <select class="form-select custom-select" formControlName="estado">
+                                    <option value="Nuevo">Nuevo</option>
+                                    <option value="Usado">Usado</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" formControlName="bateria" class="form-control form-control-lg" placeholder="Bateria">
+                                <div class="text-danger" *ngIf="phoneForm.get('bateria')?.hasError('required') && phoneForm.get('bateria')?.touched">
+                                    <span>La bateria <strong>es obligatorio</strong></span>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <input type="text" formControlName="descripcion" class="form-control form-control-lg" placeholder="Descripcion">
-                                <div class="text-danger" *ngIf="accesorioForm.get('descripcion')?.hasError('required') && accesorioForm.get('descripcion')?.touched">
-                                    <span>La descripcion <strong>es obligatoria</strong></span>
-                                </div>
+                                <input type="number" formControlName="capacidad" class="form-control form-control-lg" placeholder="Capacidad">
                             </div>
                             <div class="mb-3">
-                                <input type="text" formControlName="precio" class="form-control form-control-lg" placeholder="Precio">
-                                <div class="text-danger" *ngIf="accesorioForm.get('precio')?.hasError('required') && accesorioForm.get('precio')?.touched">
-                                    <span>El precio <strong>es obligatorio</strong></span>
-                                </div>
+                                <input type="text" formControlName="observaciones" class="form-control form-control-lg" placeholder="Observaciones">
+                            </div>
+                            <div class="mb-3">
+                                <input type="number" formControlName="valor" class="form-control form-control-lg" placeholder="Valor">
+                            </div>
+                            <div class="mb-3">
+                                <label>Visible</label>
+                                <select class="form-select custom-select" formControlName="visible">
+                                    <option value="true">Verdadero</option>
+                                    <option value="false">Falso</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <!-- Input para la imagen principal -->
@@ -91,16 +105,19 @@
                                 <!-- Sección existente para imágenes secundarias, sin cambios -->
                                 <input type="file" name="imagePaths" multiple class="d-none" (change)="onPhotoSelected($event)" #photoInput>
                                 <div class="d-flex flex-row flex-wrap">
-                                    <div *ngFor="let photo of photosSelected; let i = index">
-                                        <img [src]="photo" class="img-fluid mb-2 mt-2" alt="Imagen seleccionada {{i + 1}}" (click)="photoInput.click()" width="50" height="50">
-                                    </div>
+                                    <!-- ng-container para el ngFor, no se renderiza en el DOM -->
+                                    <ng-container *ngIf="photosSelected.length > 0">
+                                        <div *ngFor="let photo of photosSelected; let i = index">
+                                            <!-- Solo muestra la imagen si photo existe -->
+                                            <img *ngIf="photo" [src]="photo" class="img-fluid mb-2" alt="Imagen seleccionada {{i + 1}}" (click)="photoInput.click()" width="50" height="50">
+                                        </div>
+                                    </ng-container>
                                 </div>
                                 <button type="button" class="btn btn-primary btn-sm" (click)="photoInput.click()">Seleccionar Fotos Secundarias</button>
-    
                             </div>
                             <div class="mb-3">
-                                <button class="btn btn-secondary btn-lg float-start" routerLink="/accesorio">VOLVER</button>
-                                <button class="btn btn-lg float-end" id="boton" type="submit" [disabled]="accesorioForm.invalid">ACEPTAR</button>
+                                <button class="btn btn-secondary btn-lg float-start" routerLink="/phone">VOLVER</button>
+                                <button class="btn btn-lg float-end" id="boton" type="submit" [disabled]="phoneForm.invalid">ACEPTAR</button>
                             </div>
                         </form>
                     </div>
@@ -108,5 +125,4 @@
             </div>
         </div>
     </div>
-
 </div>

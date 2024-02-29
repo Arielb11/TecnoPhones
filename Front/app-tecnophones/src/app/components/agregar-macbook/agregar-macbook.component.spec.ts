@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MacbooksComponent } from './macbooks.component';
+import { AgregarMacbookComponent } from './agregar-macbook.component';
 
-describe('MacbooksComponent', () => {
-  let component: MacbooksComponent;
-  let fixture: ComponentFixture<MacbooksComponent>;
+describe('AgregarMacbookComponent', () => {
+  let component: AgregarMacbookComponent;
+  let fixture: ComponentFixture<AgregarMacbookComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MacbooksComponent]
+      imports: [AgregarMacbookComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(MacbooksComponent);
+    fixture = TestBed.createComponent(AgregarMacbookComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
