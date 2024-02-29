@@ -11,10 +11,10 @@ import { FooterComponent } from '../footer/footer.component';
   selector: 'app-macbooks',
   standalone: true,
   imports: [CommonModule, FooterComponent, RouterModule, FormsModule],
-  templateUrl: './macbooks.component.html',
-  styleUrl: './macbooks.component.css'
+  templateUrl: './vista-macbooks.component.html',
+  styleUrl: './vista-macbooks.component.css'
 })
-export class MacbooksComponent {
+export class VistaMacbooksComponent {
   accesorios: Accesorio [] = [];
   suscripcion:Subscription | undefined;
   search:String | undefined;

@@ -12,20 +12,24 @@ import { VistaAccesoriosComponent } from './components/vista-accesorios/vista-ac
 import { DetallesIphoneComponent } from './components/detalles-iphone/detalles-iphone.component';
 import { LoginGuard } from './guards/login.guard';
 import { DetallesAccesorioComponent } from './components/detalles-accesorio/detalles-accesorio.component';
-import { MacbooksComponent } from './components/macbooks/macbooks.component';
+import { VistaMacbooksComponent } from './components/vista-macbooks/vista-macbooks.component';
+import { AgregarMacbookComponent } from './components/agregar-macbook/agregar-macbook.component';
+import { MacbookComponent } from './components/macbook/macbook.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'iPhoneNuevos', component: PhoneNuevosComponent},
     {path: 'iPhoneUsados', component: PhoneUsadosComponent},
-    {path: 'MacBook', component: MacbooksComponent},
+    {path: 'list-MacBook', component: VistaMacbooksComponent},
     {path: 'list-accesorios', component: VistaAccesoriosComponent},
     {path: 'detalles-iphone/:id', component: DetallesIphoneComponent},
     {path: 'detalles-accesorio/:id', component: DetallesAccesorioComponent},
     {path: 'accesorio', component: AccesorioComponent, canActivate: [LoginGuard]},
     {path: 'agregar-accesorios', component: AgregarAccesorioComponent, canActivate: [LoginGuard]},
     {path: 'editar-accesorios/:id', component: AgregarAccesorioComponent, canActivate: [LoginGuard]},
+    {path: 'agregar-macbook', component: AgregarMacbookComponent, canActivate: [LoginGuard]},
     {path: 'phone', component: PhoneComponent, canActivate: [LoginGuard]},
+    {path: 'macbook', component: MacbookComponent, canActivate: [LoginGuard]},
     {path: 'agregar-phone', component: AgregarPhoneComponent, canActivate: [LoginGuard]},
     {path: 'editar-phone/:id', component: AgregarPhoneComponent, canActivate: [LoginGuard]},
     {path: 'login', component: LoginComponent},
