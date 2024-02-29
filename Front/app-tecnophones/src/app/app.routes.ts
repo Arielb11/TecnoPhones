@@ -12,11 +12,13 @@ import { VistaAccesoriosComponent } from './components/vista-accesorios/vista-ac
 import { DetallesIphoneComponent } from './components/detalles-iphone/detalles-iphone.component';
 import { LoginGuard } from './guards/login.guard';
 import { DetallesAccesorioComponent } from './components/detalles-accesorio/detalles-accesorio.component';
+import { MacbooksComponent } from './components/macbooks/macbooks.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'iPhoneNuevos', component: PhoneNuevosComponent},
     {path: 'iPhoneUsados', component: PhoneUsadosComponent},
+    {path: 'MacBook', component: MacbooksComponent},
     {path: 'list-accesorios', component: VistaAccesoriosComponent},
     {path: 'detalles-iphone/:id', component: DetallesIphoneComponent},
     {path: 'detalles-accesorio/:id', component: DetallesAccesorioComponent},

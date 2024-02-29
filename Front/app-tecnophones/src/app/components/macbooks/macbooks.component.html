@@ -76,7 +76,7 @@
          <div id="carusel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
            <div class="carousel-inner">
              <div class="carousel-item active">
-               <img src="/assets/img/IPHONESNUEVOS-CA.svg" class="d-block w-100" alt="...">
+               <img src="/assets/img/MACBOOK-CA.svg" class="d-block w-100" alt="...">
              </div>
              <div class="carousel-item ">
                 <img src="/assets/img/REDESS.svg" class="d-block w-100" alt="...">
@@ -92,7 +92,7 @@
      
      <div class="container-fluid">
          <div class="col text-center"> <!-- Centro el contenido -->
-             <h1 class="main-title animated">IPHONES NUEVOS</h1> <!-- Título agregado -->
+             <h1 class="main-title animated">iPad y MacBook</h1> <!-- Título agregado -->
              <div class="line"></div>
          </div>
          <div class="row justify-content-center">
@@ -102,33 +102,28 @@
                          
                           <!-- Nuevo contenedor para las tarjetas -->
                          <!-- Category Cards -->
-                        <ng-container *ngFor="let celular of listaCelulares">
-                            <div class="col-lg-4 mb-4" *ngIf="celular.estado === 'Nuevo'">
-                                 <div class="card" [routerLink]="['/detalles-iphone/', celular._id]">
-                                     <div class="card-image card-hover">
-                                         <img [src]="'http://localhost:3000/' + celular.imagenPrincipal" alt="" class="img-card-top">
-                                         <div class="card-overlay">
-                                             <div class="capacity">
-                                                 {{celular.capacidad}} GB
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <div class="card-body text-center">
-                                         <h5 class="card-title text-uppercase font-weight-bold custom-font-model">{{celular.modelo}}</h5>
-                                         <h3 class="card-price font-weight-bold custom-font" style="color: #0d53d4">$USD {{celular.valor | number:'1.2-2' }}</h3>
-                                     </div>
-                                     <div class="mt-auto">
-                                         <div class="card-footer  text-center " style="color: rgb(61, 141, 81);"><i class="fas fa-truck"></i> Envíos a todo el país</div>
-                                     </div>
+                            <div class="col-lg-4 mb-4" *ngFor="let acces of accesorios">
+                                <div class="card">
+                                    <a [routerLink]="['/detalles-accesorio/', acces._id]" style="text-decoration: none;">
+                                        <div class="card-image card-hover">
+                                            <img [src]="'http://localhost:3000' + acces.imagenPrincipal " alt="" class="img-card-top">
+                                        </div>
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title text-uppercase font-weight-bold custom-font-model">{{acces.nombre}}</h5>
+                                            <h3 class="card-price font-weight-bold custom-font" style="color: #0d53d4">$USD {{acces.precio | number:'1.2-2' }}</h3>
+                                        </div>
+                                        <div class="mt-auto">
+                                            <div class="card-footer  text-center " style="color: rgb(61, 141, 81);"><i class="fas fa-truck"></i> Envíos a todo el país</div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>   
-                        </ng-container>
                      </div>
                  </div>
              </div>
          </div>
      </div>
      
- </div>
+
  
  <app-footer></app-footer>
