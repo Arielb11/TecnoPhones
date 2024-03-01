@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AccesorioService } from '../../services/accesorio.service';
-import { Accesorio } from '../../models/accesorio';
+import { MacbookService } from '../../services/macbook.service';
+import { Macbook } from '../../models/macbook';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -15,33 +15,32 @@ import { FooterComponent } from '../footer/footer.component';
   styleUrl: './vista-macbooks.component.css'
 })
 export class VistaMacbooksComponent {
-  accesorios: Accesorio [] = [];
+  macbooks: Macbook [] = [];
   suscripcion:Subscription | undefined;
   search:String | undefined;
 
-  constructor (private _accesorioService: AccesorioService) {}
+  constructor (private _macbookService: MacbookService) {}
   
   ngOnInit(): void {
-    this.obtenerAccesorios();
+    this.obtenerMacbooks();
   }
 
-  obtenerAccesorios() {
-    this._accesorioService.getAcceosrios()
+  obtenerMacbooks() {
+    this._macbookService.getMacbooks()
       .subscribe(
         res => {
-         this.accesorios = res; 
+         this.macbooks = res; 
         },
         error => console.log(error)
       );
   }
   buscar(){
     if (this.search === "") {
-      this.obtenerAccesorios();
+      this.obtenerMacbooks();
     }else{
-      this._accesorioService.buscar(this.search).subscribe( 
+      this._macbookService.buscar(this.search).subscribe( 
         data => {
-          console.log("Hola");
-          this.accesorios = data;
+          this.macbooks = data;
         },
         error => {
           console.log(error);

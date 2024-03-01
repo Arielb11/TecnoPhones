@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Phone } from '../../models/phone';
-import { PhoneService } from '../../services/phone.service';
+import { MacbookService } from '../../services/macbook.service';
+import { Macbook } from '../../models/macbook';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 
@@ -13,29 +13,29 @@ import Swal from 'sweetalert2';
   styleUrl: './macbook.component.css'
 })
 export class MacbookComponent {
-  listPhones: Phone[] = [];
+  listMacbooks: Macbook[] = [];
 
-  constructor(private _phoneService: PhoneService) {}
+  constructor(private _macbookService: MacbookService ) {}
 
   ngOnInit(): void{
-    this.obtenerPhones();
+    this.obtenerMacbooks();
   }
 
-  obtenerPhones(){
-    this._phoneService.getPhones().subscribe(data => {
-      this.listPhones = data;
+  obtenerMacbooks(){
+    this._macbookService.getMacbooks().subscribe(data => {
+      this.listMacbooks = data;
     }, error => {
       console.log(error);
     })
   }
 
-  eliminarPhone(id: any){
-    this._phoneService.eliminarPhone(id).subscribe(data => {
+  eliminarMacbook(id: any){
+    this._macbookService.eliminarMacbook(id).subscribe(data => {
       Swal.fire({
         title: "iPhone eliminado correctamente",
         icon: "success"
       });
-      this.obtenerPhones();
+      this.obtenerMacbooks();
     }, error => {
       console.log(error);
     })

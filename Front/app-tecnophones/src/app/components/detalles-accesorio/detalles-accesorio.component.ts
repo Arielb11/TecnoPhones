@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Accesorio } from '../../models/accesorio';
 import { AccesorioService } from '../../services/accesorio.service';
@@ -8,7 +8,7 @@ import { FooterComponent } from '../footer/footer.component';
 @Component({
   selector: 'app-detalles-accesorio',
   standalone: true,
-  imports: [CommonModule, FooterComponent],
+  imports: [CommonModule, FooterComponent, RouterModule],
   templateUrl: './detalles-accesorio.component.html',
   styleUrl: './detalles-accesorio.component.css'
 })

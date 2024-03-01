@@ -36,7 +36,12 @@ module.exports = {
         const { modelo, caracteristicas, memoria, almacenamiento, precio, visible } = req.body;
 
         let updateData = {
-            modelo, caracteristicas, memoria, almacenamiento, precio, visible
+            modelo, 
+            caracteristicas, 
+            memoria, 
+            almacenamiento, 
+            precio, 
+            visible
         }
         if (req.files.imagenPrincipal && req.files.imagenPrincipal.length > 0) {
             const imagenPrincipalPath = '/uploads/' + req.files.imagenPrincipal[0].filename;
@@ -55,7 +60,7 @@ module.exports = {
 
     delete: async(req, res) => {
         const {id} = req.params;
-        await eliminarImagen(id);
+        //await eliminarImagen(id);
         macbookModel
             .deleteOne({ _id: id})
             .then((data) => res.json(data))
@@ -64,7 +69,7 @@ module.exports = {
 
     buscar: async(req, res) => {
         const {texto_busqueda} = req.params;
-        phoneModel
+        macbookModel
             .find({"modelo": new RegExp(texto_busqueda, 'i')})
             .then((data) => res.json(data))
             .catch((error) => res.json({message: error}));
@@ -74,19 +79,19 @@ module.exports = {
 
 const eliminarImagen = async (id) => {
     try {
-        const phone = await phoneModel.findById(id);
-        if (phone) {
+        const pmackbook = await mackbookModel.findById(id);
+        if (mackbook) {
             // Elimina la imagen principal si existe
-            if (phone.imagenPrincipal) {
-                const imagenPrincipalPath = path.join(__dirname, 'public', phone.imagenPrincipal);
+            if (mackbook.imagenPrincipal) {
+                const imagenPrincipalPath = path.join(__dirname, 'public', mackbook.imagenPrincipal);
                 if (fs.existsSync(imagenPrincipalPath)) {
                     fs.unlinkSync(imagenPrincipalPath);
                 }
             }
             
             // Elimina las imágenes secundarias si existen
-            if (phone.imagePaths && phone.imagePaths.length) {
-                phone.imagePaths.forEach(imgPath => {
+            if (mackbook.imagePaths && mackbook.imagePaths.length) {
+                mackbook.imagePaths.forEach(imgPath => {
                     const fullPath = path.join(__dirname, 'public', imgPath);
                     if (fs.existsSync(fullPath)) {
                         fs.unlinkSync(fullPath);

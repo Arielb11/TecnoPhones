@@ -76,7 +76,6 @@ export class AgregarAccesorioComponent implements OnInit{
           descripcion: data.descripcion,
           precio: data.precio
         });
-        console.log(data.imagenPrincipal);
         // Asumiendo que `data.imagePaths` es un arreglo de rutas de imágenes
         this.photosSelected = data.imagePaths.map((path: string) => `http://localhost:3000/${path}`);
         if(data.imagenPrincipal) {

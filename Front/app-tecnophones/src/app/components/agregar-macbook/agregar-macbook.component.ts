@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { Phone } from '../../models/phone';
-import { PhoneService } from '../../services/phone.service';
+import { Macbook } from '../../models/macbook';
+import { MacbookService } from '../../services/macbook.service';
 import Swal from 'sweetalert2';
 
 
@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
   styleUrl: './agregar-macbook.component.css'
 })
 export class AgregarMacbookComponent {
-  phoneForm: FormGroup;
+  macbookForm: FormGroup;
   titulo = 'Agregar';
   id: string | null;
   imagePaths: File [] = [];
@@ -25,14 +25,13 @@ export class AgregarMacbookComponent {
   mostrarSelect: boolean = true;
   imagenPrincipalUrl: string | null = null;
 
-  constructor (private fb: FormBuilder, private router: Router, private _phoneService: PhoneService, private aRouter: ActivatedRoute) {
-    this.phoneForm = this.fb.group({
+  constructor (private fb: FormBuilder, private router: Router, private _macbookService: MacbookService, private aRouter: ActivatedRoute) {
+    this.macbookForm = this.fb.group({
       modelo: ['', Validators.required],
-      estado: ['', Validators.required],
-      bateria: ['', Validators.required],
-      capacidad: ['', Validators.required],
-      observaciones: ['', Validators.required],
-      valor: ['', Validators.required],
+      caracteristicas: ['', Validators.required],
+      memoria: [''],
+      almacenamiento: ['', Validators.required],
+      precio: ['', Validators.required],
       visible: ['', Validators.required]
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
@@ -42,40 +41,37 @@ export class AgregarMacbookComponent {
     this.esEditar();
   }
 
-  agregarPhone() {
+  agregarMacbook() {
     // Extraer valores directamente del formulario
-    const modelo = this.phoneForm.get('modelo')?.value;
-    const estado = this.phoneForm.get('estado')?.value;
-    const bateria = this.phoneForm.get('bateria')?.value;
-    const capacidad = this.phoneForm.get('capacidad')?.value;
-    const observaciones = this.phoneForm.get('observaciones')?.value;
-    const valor = this.phoneForm.get('valor')?.value;
-    const visible = this.phoneForm.get('visible')?.value;
+    const modelo = this.macbookForm.get('modelo')?.value;
+    const caracteristicas = this.macbookForm.get('caracteristicas')?.value;
+    const memoria = this.macbookForm.get('memoria')?.value;
+    const almacenamiento = this.macbookForm.get('almacenamiento')?.value;
+    const precio = this.macbookForm.get('precio')?.value;
+    const visible = this.macbookForm.get('visible')?.value;
   
     if (this.id !== null) {
-      // Si hay un ID, estamos editando un teléfono existente.
-      // Asumiendo que tienes un método similar `editarPhone` que maneja la edición
-      this._phoneService.editarPhone(this.id, modelo, estado, bateria, capacidad, observaciones, valor, visible, this.imagenPrincipal, this.imagePaths).subscribe(data => {
+      this._macbookService.editarMacbook(this.id, modelo, caracteristicas, memoria, almacenamiento, precio, visible, this.imagenPrincipal, this.imagePaths).subscribe(data => {
         Swal.fire({
-          title: "iPhone editado correctamente",
+          title: "Editado correctamente!",
           icon: "success",
         });
-        this.router.navigate(['/phone']);
+        this.router.navigate(['/macbook']);
       }, error => {
         console.error(error);
-        this.phoneForm.reset();
+        this.macbookForm.reset();
       });
     } else {
-      // Crear un nuevo teléfono
-      this._phoneService.guardarPhone(modelo, estado, bateria, capacidad, observaciones, valor, visible, this.imagenPrincipal, this.imagePaths).subscribe(data => {
+      
+      this._macbookService.guardarMacbook(modelo, caracteristicas, memoria, almacenamiento, precio, visible, this.imagenPrincipal, this.imagePaths).subscribe(data => {
         Swal.fire({
-          title: "iPhone agregado correctamente",
+          title: "Agregado correctamente",
           icon: "success",
         });
-        this.router.navigate(['/phone']);
+        this.router.navigate(['/macbook']);
       }, error => {
         console.error(error);
-        this.phoneForm.reset();
+        this.macbookForm.reset();
       });
     }
   }
@@ -85,14 +81,13 @@ export class AgregarMacbookComponent {
     if (this.id !== null) {
       this.titulo = 'Editar';
       this.mostrarSelect = false;
-      this._phoneService.obtenerPhone(this.id).subscribe(data => {
-        this.phoneForm.setValue({
+      this._macbookService.obtenerMacbook(this.id).subscribe(data => {
+        this.macbookForm.setValue({
           modelo: data.modelo,
-          estado: data.estado,
-          bateria: data.bateria,
-          capacidad: data.capacidad,
-          observaciones: data.observaciones,
-          valor: data.valor,
+          caracteristicas: data.caracteristicas,
+          memoria: data.memoria,
+          almacenamiento: data.almacenamiento,
+          precio: data.precio,
           visible: data.visible,
         });
         this.photosSelected = data.imagePaths.map((path: string) => `http://localhost:3000/${path}`);

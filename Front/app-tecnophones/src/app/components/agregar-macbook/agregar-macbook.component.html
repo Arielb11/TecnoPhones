@@ -58,34 +58,33 @@
                         <div class="text-center">
                             <span class="titulo text-center">{{ titulo | uppercase}}</span>
                         </div>         
-                        <form class="mt-3" [formGroup]="phoneForm" (ngSubmit)="agregarPhone()">
+                        <form class="mt-3" [formGroup]="macbookForm" (ngSubmit)="agregarMacbook()">
                             <div class="mb-3">
                                 <input type="text" formControlName="modelo" class="form-control form-control-lg resaltado" placeholder="Modelo">
-                                <div class="text-danger" *ngIf="phoneForm.get('modelo')?.hasError('required') && phoneForm.get('modelo')?.touched">
+                                <div class="text-danger" *ngIf="macbookForm.get('modelo')?.hasError('required') && macbookForm.get('modelo')?.touched">
                                     <span>El modelo <strong>es obligatorio</strong></span>
                                 </div>
                             </div>
-                            <div class="mb-3" *ngIf="mostrarSelect">
-                                <label>Estado</label>
-                                <select class="form-select custom-select" formControlName="estado">
-                                    <option value="Nuevo">Nuevo</option>
-                                    <option value="Usado">Usado</option>
-                                </select>
-                            </div>
                             <div class="mb-3">
-                                <input type="text" formControlName="bateria" class="form-control form-control-lg" placeholder="Bateria">
-                                <div class="text-danger" *ngIf="phoneForm.get('bateria')?.hasError('required') && phoneForm.get('bateria')?.touched">
-                                    <span>La bateria <strong>es obligatorio</strong></span>
+                                <input type="text" formControlName="caracteristicas" class="form-control form-control-lg" placeholder="Caracteristicas">
+                                <div class="text-danger" *ngIf="macbookForm.get('caracteristicas')?.hasError('required') && macbookForm.get('caracteristicas')?.touched">
+                                    <span>Las caracteristicas <strong>son obligatorias</strong></span>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <input type="number" formControlName="capacidad" class="form-control form-control-lg" placeholder="Capacidad">
+                                <input type="text" formControlName="memoria" class="form-control form-control-lg" placeholder="Memoria">
                             </div>
                             <div class="mb-3">
-                                <input type="text" formControlName="observaciones" class="form-control form-control-lg" placeholder="Observaciones">
+                                <input type="text" formControlName="almacenamiento" class="form-control form-control-lg" placeholder="Almacenamiento">
+                                <div class="text-danger" *ngIf="macbookForm.get('almacenamiento')?.hasError('required') && macbookForm.get('almacenamiento')?.touched">
+                                    <span>El almacenamiento <strong>es obligatorio</strong></span>
+                                </div>
                             </div>
                             <div class="mb-3">
-                                <input type="number" formControlName="valor" class="form-control form-control-lg" placeholder="Valor">
+                                <input type="number" formControlName="precio" class="form-control form-control-lg" placeholder="Precio">
+                                <div class="text-danger" *ngIf="macbookForm.get('precio')?.hasError('required') && macbookForm.get('precio')?.touched">
+                                    <span>El precio <strong>es obligatorio</strong></span>
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label>Visible</label>
@@ -116,8 +115,8 @@
                                 <button type="button" class="btn btn-primary btn-sm" (click)="photoInput.click()">Seleccionar Fotos Secundarias</button>
                             </div>
                             <div class="mb-3">
-                                <button class="btn btn-secondary btn-lg float-start" routerLink="/phone">VOLVER</button>
-                                <button class="btn btn-lg float-end" id="boton" type="submit" [disabled]="phoneForm.invalid">ACEPTAR</button>
+                                <button class="btn btn-secondary btn-lg float-start" routerLink="/macbook">VOLVER</button>
+                                <button class="btn btn-lg float-end" id="boton" type="submit" [disabled]="macbookForm.invalid">ACEPTAR</button>
                             </div>
                         </form>
                     </div>

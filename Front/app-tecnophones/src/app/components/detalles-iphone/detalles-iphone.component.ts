@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PhoneService } from '../../services/phone.service';
 import { Phone } from '../../models/phone';
@@ -8,7 +8,7 @@ import { FooterComponent } from '../footer/footer.component';
 @Component({
   selector: 'app-detalles-iphone',
   standalone: true,
-  imports: [CommonModule, FooterComponent],
+  imports: [CommonModule, FooterComponent, RouterModule],
   templateUrl: './detalles-iphone.component.html',
   styleUrl: './detalles-iphone.component.css'
 })
