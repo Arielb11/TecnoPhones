@@ -7,7 +7,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
-  readonly baseURL = 'http://localhost:3000/api/';
+  readonly baseURL = 'https://backtecnophones-production.up.railway.app/api/';
 
   constructor(private http: HttpClient) { }
 

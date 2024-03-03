@@ -103,10 +103,10 @@
                           <!-- Nuevo contenedor para las tarjetas -->
                          <!-- Category Cards -->
                         <ng-container *ngFor="let celular of listaCelulares">
-                            <div class="col-lg-4 mb-4" *ngIf="celular.estado === 'Nuevo'">
+                            <div class="col-lg-4 mb-4" *ngIf="celular.estado === 'Nuevo'  && celular.visible">
                                  <div class="card" [routerLink]="['/detalles-iphone/', celular._id]">
                                      <div class="card-image card-hover">
-                                         <img [src]="'http://localhost:3000/' + celular.imagenPrincipal" alt="" class="img-card-top">
+                                         <img [src]="'https://backtecnophones-production.up.railway.app/' + celular.imagenPrincipal" alt="" class="img-card-top">
                                          <div class="card-overlay">
                                              <div class="capacity">
                                                  {{celular.capacidad}} GB

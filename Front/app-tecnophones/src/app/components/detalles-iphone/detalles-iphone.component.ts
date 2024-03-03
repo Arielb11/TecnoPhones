@@ -31,7 +31,7 @@ export class DetallesIphoneComponent implements OnInit{
       data => {
         this.phone = data;
         // Establece la imagen principal como la imagen seleccionada por defecto
-        this.selectedImage = `http://localhost:3000/${data.imagenPrincipal}`;
+        this.selectedImage = `https://backtecnophones-production.up.railway.app/${data.imagenPrincipal}`;
       },
       error => {
         console.log(error);
@@ -40,7 +40,7 @@ export class DetallesIphoneComponent implements OnInit{
   }
   
   selectImage(imagePath: string | File): void {
-    this.selectedImage = `http://localhost:3000${imagePath}`;
+    this.selectedImage = `https://backtecnophones-production.up.railway.app${imagePath}`;
   }
   
 }

@@ -8,7 +8,7 @@ import { Phone } from '../models/phone';
   providedIn: 'root'
 })
 export class PhoneService {
-  readonly baseURL = 'http://localhost:3000/api/';
+  readonly baseURL = 'https://backtecnophones-production.up.railway.app/api/';
   private _refresh$ = new Subject<void>();
 
   constructor(private http: HttpClient) { }

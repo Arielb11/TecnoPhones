@@ -100,9 +100,9 @@ export class AgregarPhoneComponent implements OnInit{
           valor: data.valor,
           visible: data.visible,
         });
-        this.photosSelected = data.imagePaths.map((path: string) => `http://localhost:3000/${path}`);
+        this.photosSelected = data.imagePaths.map((path: string) => `https://backtecnophones-production.up.railway.app/${path}`);
         if(data.imagenPrincipal) {
-          this.photoSelect = `http://localhost:3000/${data.imagenPrincipal}`;
+          this.photoSelect = `https://backtecnophones-production.up.railway.app/${data.imagenPrincipal}`;
           this.imagenPrincipalUrl = data.imagenPrincipal;
         }
       });

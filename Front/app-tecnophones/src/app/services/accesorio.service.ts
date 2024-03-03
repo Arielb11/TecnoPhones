@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AccesorioService {
-  readonly baseURL = 'http://localhost:3000/api/';
+  readonly baseURL = 'https://backtecnophones-production.up.railway.app/api/';
 
   constructor(private http: HttpClient) { }
 
